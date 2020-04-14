@@ -45,13 +45,7 @@ class SubCategories extends StatelessWidget {
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(5),
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.red[50],
-                                  offset: Offset(2, 6),
-                                  blurRadius: 10
-                              )
-                            ]
+                            
                         ),
 
                         child: Padding(

@@ -244,6 +244,7 @@ class _HomePageState extends State<HomePage> {
                   child: Column(
                     children: <Widget>[
                       Container(
+                        width: MediaQuery.of(context).size.width ,
                         color: primary,
                         child: Card(
                           margin: EdgeInsets.only(top:0,bottom: 2,),
@@ -256,6 +257,7 @@ class _HomePageState extends State<HomePage> {
                           elevation: 2.0,
                           color: secondary,
                           child: Container(
+                            width: MediaQuery.of(context).size.width ,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.only(
                                 bottomRight: Radius.circular(15),
@@ -266,16 +268,18 @@ class _HomePageState extends State<HomePage> {
                             margin: EdgeInsets.all(0),
                             
                             height: 65,
-                            width: MediaQuery.of(context).size.width ,
+                            
                             child: Padding(
                               padding: const EdgeInsets.only(left:8.0,right: 8.0,top: 0,),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: <Widget>[
-                                  Container( 
-                                    width: MediaQuery.of(context).size.width*0.50,
-                                    child: Expanded(child: Image.asset('images/logo2.png',
-                                    fit: BoxFit.fill,))
+                                  Expanded(
+                                    child: Container( 
+                                      width: MediaQuery.of(context).size.width*0.50,
+                                      child: Image.asset('images/logo2.png',
+                                      fit: BoxFit.fill,)
+                                    ),
                                   ),
                                   Container( 
                                     width: MediaQuery.of(context).size.width*0.30,
@@ -291,7 +295,7 @@ class _HomePageState extends State<HomePage> {
 
                       Stack(
                         children: <Widget>[
-                          HomePageBg(screenHeight: MediaQuery.of(context).size.height,color: primary,),
+                          HomePageBg(screenHeight: MediaQuery.of(context).size.height* 0.30,color: primary,),
                           Container(
                             height: 210,
                             width: MediaQuery.of(context).size.width,

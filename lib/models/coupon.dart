@@ -59,7 +59,7 @@ List<Coupon> couponCards = [
     startDate: "12/10/20",
     expireDate: "12/12/20",
     couponImg: "images/shp3.jpg",
-    couponDesc: "30%  0f on pizza  shdj asd jab sdjabsdjabsjdajsdbaj",
+    couponDesc: "Flat 20% off on shopping of Rs. 200/- only.",
     discount: "30% off",
     catagory: dominoes.bussinessType,
     ratings: "50/100"

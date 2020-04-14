@@ -23,7 +23,7 @@ class HomePageBg extends StatelessWidget {
                       //     begin: Alignment.topLeft,
                       //     end: Alignment.bottomRight)
                       ),
-              height: screenHeight * 0.30,   
+              height: screenHeight ,   
               
             ),
           );

@@ -89,11 +89,12 @@ class _CouponCardState extends State<CouponCard> {
                               padding: const EdgeInsets.only(top:5.0),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
                                   Padding(
                                     padding: const EdgeInsets.all(2.0),
                                     child: Row(
-                                      
+                                      crossAxisAlignment: CrossAxisAlignment.start,
                                       children: <Widget>[
                                         Image.asset("images/discount.png"),
                                         SizedBox(width: 5,),
