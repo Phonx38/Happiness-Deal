@@ -374,6 +374,10 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                 ),
+                Padding(
+                  padding: const EdgeInsets.only(left:8.0,right: 8.0,bottom: 0),
+                  child: RecentStores(),
+                ),
               ],
             ),
             ),
@@ -389,3 +393,66 @@ class _HomePageState extends State<HomePage> {
 
     
 
+
+
+class RecentStores extends StatefulWidget {
+  @override
+  _RecentStoresState createState() => _RecentStoresState();
+}
+
+class _RecentStoresState extends State<RecentStores> {
+  List<RecentStoreClass> recent = [
+    RecentStoreClass(img: "images/store1.png",strName: "DesiChef Kitchen"),
+    RecentStoreClass(img: "images/store2.png",strName: "William John's Pizza"),
+    RecentStoreClass(img: "images/store3.png",strName: "Christmas Gift's"),
+    RecentStoreClass(img: "images/store4.png",strName: "Laziz Pizza"),
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: MediaQuery.of(context).size.height *0.2,
+      width: MediaQuery.of(context).size.width,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        shrinkWrap: true,
+        physics: NeverScrollableScrollPhysics(),
+        itemCount: recent.length,
+        itemBuilder: (context,index){
+          return Padding(
+            padding: const EdgeInsets.only(left:4.0,top: 20,right: 4.0),
+            child: Container(
+              width: MediaQuery.of(context).size.width/4.5,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Image.asset(recent[index].img, height: 70,width: 70,),
+                  SizedBox(height:5),
+                  Center(
+                    child: Text(recent[index].strName,
+                      style: TextStyle(
+                        color: Colors.black87,
+                        fontSize: 11,
+
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          );
+        }
+      ),
+    );
+  }
+}
+
+
+class RecentStoreClass {
+  final String img;
+  final String strName;
+
+  RecentStoreClass({
+    this.img,
+    this.strName
+  });
+}
