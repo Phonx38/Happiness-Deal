@@ -28,14 +28,31 @@ class _CouponDescriptionState extends State<CouponDescription> {
     "This coupon is not valid for more that 3 people so come accordingly.",
   ];
 
+  
+
 
   bool _favBtn = false;
   bool _arw = false;
   bool _showTerms = false;
   final primary = Color.fromRGBO(76,167,223,1);
   final secondary =  Color.fromRGBO(253,210,8,1.0);
+
+
+
+
+       
   @override
   Widget build(BuildContext context) {
+     List<String> areas = [
+     "Allahabad",
+     "Delhi",
+     "Lucknow",
+     "Vadodra",
+     "Bangalore",
+     "Lahsun",
+     "Ahemdabad"
+  ];
+     
     return Scaffold(
 
       bottomNavigationBar: BottomAppBar(
@@ -123,6 +140,7 @@ class _CouponDescriptionState extends State<CouponDescription> {
      appBar: PreferredSize(
         preferredSize: Size.fromHeight(40),
         child: AppBar(
+          titleSpacing: 0,
           elevation: 0,
           backgroundColor: primary,
           leading:  Builder(
@@ -135,16 +153,20 @@ class _CouponDescriptionState extends State<CouponDescription> {
                       
                           child: Padding(
                             padding: const EdgeInsets.all(4.0),
-                            child: Icon(Icons.sort,size: 20,),
+                            child: Icon(Icons.arrow_back_ios,size: 20,),
                           ),
-                          onTap: () => Scaffold.of(context).openDrawer(),
-                          // tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+                          onTap: (){
+                            Navigator.pop(context);
+                          }
+                          
                           
                         ),
                   ),
                 ),
               ),
-              title: Text("HappyDealDetails"),
+              title: Container(
+                margin: EdgeInsets.all(0),
+                child: Text("HappyDeal Details")),
         ),
       ),
 
@@ -173,16 +195,24 @@ class _CouponDescriptionState extends State<CouponDescription> {
                             ),
                           ),
                           Positioned(
-                            right: 10,
+                            right: 15,
+                           
                             child: MaterialButton(
-                              minWidth: 30,
+                              minWidth: 20,
                               height: 15,
+                              padding: EdgeInsets.all(2),
                               onPressed: (){
 
 
                               },
                               color: secondary,
-                              child: Text("PHOTOS   >",style: TextStyle(fontSize: 10,color: Colors.black87,fontWeight: FontWeight.bold),),
+                              child: Row(
+                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: <Widget>[
+                                  Text("Photos ",style: TextStyle(fontSize: 10,color: Colors.black87,fontWeight: FontWeight.bold),),
+                                  Image.asset("images/menu/next.png",height: 8,width: 8,),
+                                ],
+                              ),
                               ),
                           )
                           
@@ -192,7 +222,7 @@ class _CouponDescriptionState extends State<CouponDescription> {
 
 
                 Padding(
-                  padding: const EdgeInsets.only(left:15.0,right:15.0,top:10),
+                  padding: const EdgeInsets.only(left:12.0,right:15.0,top:10),
                   child: Container(
                     width: MediaQuery.of(context).size.width,
                     child: Row(
@@ -200,18 +230,18 @@ class _CouponDescriptionState extends State<CouponDescription> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Image.asset("images/discount.png",width: 20,height: 20,fit: BoxFit.fill,),
-                          SizedBox(width: 10,),
+                          SizedBox(width: 5,),
                           Expanded(
                             
                             
                             child: Container(
-                              width: MediaQuery.of(context).size.width*70,
+                              width: MediaQuery.of(context).size.width*75,
                               child: Text(
                                 widget.coupon.couponDesc,
                                 // maxLines: 2,
                                 style: TextStyle(
                                   fontSize: 16,
-                                  color: primary
+                                  color: Color.fromRGBO(2,68,119,1)
                                 ),
                               ),
                             ),
@@ -229,7 +259,7 @@ class _CouponDescriptionState extends State<CouponDescription> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left:20.0,right:15.0,top:10),
+                  padding: const EdgeInsets.only(left:10.0,right:0.0,top:20),
                   child: Container(
                     width: MediaQuery.of(context).size.width,
                     child: Row(
@@ -237,14 +267,15 @@ class _CouponDescriptionState extends State<CouponDescription> {
                       children: <Widget>[
                         Expanded(
                           child: Container(
-                            width: MediaQuery.of(context).size.width/4,
+                            width: MediaQuery.of(context).size.width/3,
                             child: Row(
                               children: <Widget>[
-                                Image.asset("images/calendar.png",height: 15,width: 15,fit: BoxFit.fill,),
+                                Image.asset("images/calendar.png",height: 13,width: 13,fit: BoxFit.fill,),
+                                SizedBox(width:2),
                                 Text("Valid Till: ${widget.coupon.startDate}",style: TextStyle(
                                   color: Colors.black87,
                                   fontSize: 10,
-                                  // fontWeight: FontWeight.bold
+                                  fontWeight: FontWeight.bold
                                 ),)
                               ],
                             ),
@@ -253,14 +284,15 @@ class _CouponDescriptionState extends State<CouponDescription> {
 
                         Expanded(
                           child: Container(
-                            width: MediaQuery.of(context).size.width/4,
+                            width: MediaQuery.of(context).size.width/3,
                             child: Row(
                               children: <Widget>[
                                 Image.asset("images/discounticon.png",height: 15,width: 15,fit: BoxFit.fill,),
+                                SizedBox(width:2),
                                 Text("Happy Hour Deal",style: TextStyle(
                                   color: Colors.black87,
                                   fontSize: 10,
-                                  // fontWeight: FontWeight.bold
+                                  fontWeight: FontWeight.bold
                                 ),)
                               ],
                             ),
@@ -269,14 +301,15 @@ class _CouponDescriptionState extends State<CouponDescription> {
 
                         Expanded(
                           child: Container(
-                            width: MediaQuery.of(context).size.width/4,
+                            width: MediaQuery.of(context).size.width/3,
                             child: Row(
                               children: <Widget>[
                                 Image.asset("images/timer1.png",height: 15,width: 15,fit: BoxFit.fill,),
+                                SizedBox(width:2),
                                 Text("3:00PM - 4:00PM ",style: TextStyle(
                                   color: Colors.black87,
                                   fontSize: 10,
-                                  // fontWeight: FontWeight.bold
+                                  fontWeight: FontWeight.bold
                                 ),)
                               ],
                             ),
@@ -288,7 +321,7 @@ class _CouponDescriptionState extends State<CouponDescription> {
                   ),
                 ),
                 Padding(
-                   padding: const EdgeInsets.only(left:15.0,right:15.0,top:10),
+                   padding: const EdgeInsets.only(left:15.0,right:15.0,top:0),
                   child: Divider(),
                 ),
 
@@ -299,18 +332,18 @@ class _CouponDescriptionState extends State<CouponDescription> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      Text("HappyDeal By",style: TextStyle(
+                      Text("HappyDeal by",style: TextStyle(
                         color: primary,
                         fontWeight: FontWeight.bold,
-                        fontSize: 17
+                        fontSize: 13
                       ),),
 
                       Row(
                         children: <Widget>[
                           Image.asset("images/discount.png",height: 12,width: 12,fit: BoxFit.fill,),
                           SizedBox(width:5),
-                          Text("(3 More Deals)",style: TextStyle(
-                            color: primary,
+                          Text("3 More Deals",style: TextStyle(
+                            color: Color.fromRGBO(2,68,119,0.8),
                             // fontWeight: FontWeight.bold,
                             fontSize: 13,
                           ),),
@@ -326,18 +359,20 @@ class _CouponDescriptionState extends State<CouponDescription> {
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      RichText(
-                                text: TextSpan(
-                                  children: [
-                                    TextSpan(
-                                    text:"${widget.coupon.dealBy}",style: TextStyle(fontSize: 20,color: Colors.black,fontWeight: FontWeight.bold,fontFamily: "Montserrat-Medium")
+                      Expanded(
+                        child: RichText(
+                                  text: TextSpan(
+                                    children: [
+                                      TextSpan(
+                                      text:"${widget.coupon.dealBy}",style: TextStyle(fontSize: 20,color: Colors.black,fontWeight: FontWeight.bold,fontFamily: "Montserrat-Medium")
+                                    ),
+                                     TextSpan(
+                                      text:"(3 Outlets)",style: TextStyle(fontSize: 13,color: Colors.black54,fontFamily: "Montserrat-Medium")
+                                    )
+                                    ]
                                   ),
-                                   TextSpan(
-                                    text:"(3 Outlets)",style: TextStyle(fontSize: 13,color: Colors.grey[400],fontWeight: FontWeight.bold,fontFamily: "Montserrat-Medium")
-                                  )
-                                  ]
                                 ),
-                              ),
+                      ),
                     ],
                   ),
                 ),
@@ -365,20 +400,21 @@ class _CouponDescriptionState extends State<CouponDescription> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget>[
                       Container(
-                        height: 25,
-                        width: 30,
+                        height: 20,
+                        width: 20,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(2),
                           color:Colors.lightGreen
                         ),
                         child: Center(
                           child: Text("4.6",style: TextStyle(
-                                  color: Colors.black87,
+                                  color: Colors.white,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 10,
                                 ),),
                         ),
                       ),
+                      SizedBox(width:3),
                       RatingBar(
                         onRatingUpdate: (rating) {
                           print(rating);
@@ -422,6 +458,7 @@ class _CouponDescriptionState extends State<CouponDescription> {
                               child: Column(
                                 children: <Widget>[
                                    Image.asset("images/storeicon.png",height: 20,width: 20,fit: BoxFit.fill,),
+                                   SizedBox(height:2),
                                    Text("Store",style: TextStyle(
                                      color: Colors.white,
                                      fontSize: 13
@@ -431,7 +468,12 @@ class _CouponDescriptionState extends State<CouponDescription> {
                             ),
                           ),
                         ),
-                        VerticalDivider(color:Colors.white),
+                        Container(
+                          height: MediaQuery.of(context).size.height*0.06,
+                          child: VerticalDivider(
+                            thickness: 2,
+                            color:secondary,
+                            )),
                         Expanded(
                           child: Padding(
                             padding: const EdgeInsets.all(13.0),
@@ -439,6 +481,7 @@ class _CouponDescriptionState extends State<CouponDescription> {
                               child: Column(
                                 children: <Widget>[
                                    Image.asset("images/phone1.png",height: 20,width: 20,fit: BoxFit.fill,),
+                                   SizedBox(height:2),
                                    Text("Call",style:TextStyle(
                                      color: Colors.white,
                                      fontSize: 13
@@ -448,14 +491,99 @@ class _CouponDescriptionState extends State<CouponDescription> {
                             ),
                           ),
                         ),
-                        VerticalDivider(color:Colors.white),
+                        Container(
+                          height: MediaQuery.of(context).size.height*0.06,
+                          child: VerticalDivider(
+                            thickness: 2,
+                            color:secondary,
+                            )),
                         Expanded(
                           child: GestureDetector(
                             onTap: (){
-                              showDialog(
+
+                              showGeneralDialog(
+                                barrierLabel: "Label",
+                                barrierDismissible: true,
+                                barrierColor: Colors.black.withOpacity(0.5),
+                                transitionDuration: Duration(milliseconds: 200),
                                 context: context,
-                                builder: (BuildContext context) => AreaDialog(),
+                                pageBuilder: (context, anim1, anim2) {
+                                  return Wrap(
+                                    children:<Widget>[
+                                       Material(
+                                         borderRadius: BorderRadius.circular(10),
+                                         child: Container(
+                                      
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.white,
+                            ),
+                            height: 300,
+                            width: MediaQuery.of(context).size.width*0.9,
+                            child: Padding(
+                              padding: const EdgeInsets.only(right: 8.0,top: 8.0,left:8.0),
+                              child: Column(
+                                    children: <Widget>[
+                                      Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: <Widget>[
+                                            Text("Area : ", style: TextStyle(
+                                                color: Colors.black87,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 20
+                                              ),),
+
+                                            GestureDetector(
+                                                onTap: (){
+                                                  Navigator.pop(context);
+                                                },
+                                                child: Icon(Icons.cancel,size:30,color:primary))
+
+                                          ],
+                                      ),
+                                      Divider(),
+
+                                      Expanded(
+                                          child: ListView.builder(
+                                            shrinkWrap: true,
+                                            scrollDirection: Axis.vertical,
+                                            itemCount: areas.length,
+                                            itemBuilder: (context,index){
+                                              return Column(
+                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                children: <Widget>[
+                                                  Center(
+                                                    child: Text(areas[index],style: TextStyle(
+                                                      color: Colors.black87,
+                                                      fontWeight: FontWeight.bold,
+                                                      fontSize: 15
+                                                    ),),
+                                                  ),
+
+                                                  Divider()
+                                                ],
+
+                                              );
+                                            },
+                                          ),
+                                      )
+                                    ],
+                              ),
+                            )
+                          ),
+                                       ),]
+                                  );
+                                
+                                },
+                                transitionBuilder: (context, anim1, anim2, child) {
+                                  return SlideTransition(
+                                    position: Tween(begin: Offset(0, 1), end: Offset(0.05, 0.5)).animate(anim1),
+                                    child: child,
+                                  );
+                                },
                               );
+  
                             },
                             child: Padding(
                               padding: const EdgeInsets.all(13.0),
@@ -463,6 +591,7 @@ class _CouponDescriptionState extends State<CouponDescription> {
                                 child: Column(
                                   children: <Widget>[
                                      Image.asset("images/location.png",height: 20,width: 20,fit: BoxFit.fill,),
+                                     SizedBox(height:2),
                                      Text("Location",style:TextStyle(
                                        color: Colors.white,
                                        fontSize: 13
@@ -535,6 +664,7 @@ class _CouponDescriptionState extends State<CouponDescription> {
         )
       ),
     );
+    
   }
 }
 
@@ -616,95 +746,6 @@ class CustomDialog extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-
-class AreaDialog extends StatefulWidget {
-  @override
-  _AreaDialogState createState() => _AreaDialogState();
-}
-
-class _AreaDialogState extends State<AreaDialog> {
-  List<String> areas = [
-     "Allahabad",
-     "Delhi",
-     "Lucknow",
-     "Vadodra",
-     "Bangalore",
-     "Lahsun",
-     "Ahemdabad"
-  ];
-  @override
-  Widget build(BuildContext context) {
-    return Dialog(
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-      ),      
-      elevation: 0.0,
-      backgroundColor: Colors.transparent,
-      child: Container(
-         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: Colors.white,
-        ),
-        height: MediaQuery.of(context).size.height *0.35,
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Text("Area : ", style: TextStyle(
-                      color: Colors.black87,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20
-                    ),),
-
-                   GestureDetector(
-                      onTap: (){
-                        Navigator.pop(context);
-                      },
-                      child: Icon(Icons.cancel,size:30,color:primary))
-
-                ],
-              ),
-              Divider(),
-
-              Expanded(
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  scrollDirection: Axis.vertical,
-                  itemCount: areas.length,
-                  itemBuilder: (context,index){
-                    return Padding(
-                      padding: const EdgeInsets.all(2.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Center(
-                            child: Text(areas[index],style: TextStyle(
-                              color: Colors.black87,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15
-                            ),),
-                          ),
-
-                          Divider()
-                        ],
-
-                      ),
-                    );
-                  },
-                ),
-              )
-            ],
-          ),
-        )
       ),
     );
   }

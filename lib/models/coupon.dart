@@ -31,7 +31,7 @@ class Coupon{
 
 
 final Merchant dominoes =  Merchant(
-  merchantId: 1,merchantName: "Dominoes",merchantAdd: "New York", merchantWebsite: "www.Dominoes.com",merchantNumber: 123456891,bussinessType: "food"
+  merchantId: 1,merchantName: "William John's Pizza",merchantAdd: "New York", merchantWebsite: "www.Dominoes.com",merchantNumber: 123456891,bussinessType: "food"
 );
 final Merchant pizzaHut =  Merchant(
   merchantId: 2,merchantName: "Pizza hut",merchantAdd: "New York", merchantWebsite: "www.Dominoes.com",merchantNumber: 123456891,bussinessType: "food"
@@ -59,7 +59,7 @@ List<Coupon> couponCards = [
     startDate: "12/10/20",
     expireDate: "12/12/20",
     couponImg: "images/shp3.jpg",
-    couponDesc: "Flat 20% off on shopping of Rs. 200/- only.",
+    couponDesc: "Flat 20% off on shopping on 500 rupee valid for only 2 person at a time.",
     discount: "30% off",
     catagory: dominoes.bussinessType,
     ratings: "50/100"

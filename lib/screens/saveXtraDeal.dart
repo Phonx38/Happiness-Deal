@@ -46,16 +46,18 @@ class _SaveXtraDealState extends State<SaveXtraDeal> {
               ),
               actions: <Widget>[
                 Padding(
-              padding: const EdgeInsets.only(right:25.0,top:10),
+              padding: const EdgeInsets.only(right:10.0,top:5),
               child: Container(
                 height: 30,
                 child: Badge(
-                    badgeColor: Color.fromRGBO(253,210,8,1.0),
-                    badgeContent: Text('10',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 10),),
-                    child: Icon(Icons.notifications),
-                  ),
+                  padding: EdgeInsets.all(2),
+                  position: BadgePosition(right: 0,bottom: 19),
+                  badgeColor: Color.fromRGBO(253,210,8,1.0),
+                  badgeContent: Text('10',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 8),),
+                  child: Icon(Icons.notifications),
                 ),
               ),
+            ),
 
               ],
         ),
