@@ -23,6 +23,7 @@ class _CategoryDetailState extends State<CategoryDetail> {
   Widget build(BuildContext context) {
     
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(40),
         child: AppBar(
@@ -117,10 +118,7 @@ class _CategoryDetailState extends State<CategoryDetail> {
                               ],
                             ),
                             
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: SingleChildScrollView(child: CouponCardList(),),
-                            )
+                            SingleChildScrollView(child: CouponCardList(),)
                           ],
                         ),
                       ),

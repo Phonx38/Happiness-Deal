@@ -2,18 +2,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dash/flutter_dash.dart';
 
-class Help extends StatelessWidget {
+class CouponCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double rh = MediaQuery.of(context).size.height;
     double rw = MediaQuery.of(context).size.width;
-    return MaterialApp(
-      theme: ThemeData(
-        // fontFamily: "Montserrat-Medium"
-      ),
-      home: Scaffold(
-        
-        body: Container(
+    return  Container(
           height: rh,
           width: rw,
           child: Column(
@@ -189,8 +183,6 @@ class Help extends StatelessWidget {
               )
             ],
           ),
-        ),
-      ),
     );
   }
 }

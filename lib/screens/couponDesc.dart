@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:couponzz/models/coupon.dart';
 import 'package:couponzz/widgets/homepage_bg.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 
@@ -114,11 +115,93 @@ class _CouponDescriptionState extends State<CouponDescription> {
                       height: 50,
                       elevation: 0,
                       onPressed:(){
-
-                        showDialog(
+                        showGeneralDialog(
+                          barrierLabel: "Label",
+                          barrierDismissible: true,
+                          barrierColor: Colors.black.withOpacity(0.5),
+                          transitionDuration: Duration(milliseconds: 200),
                           context: context,
-                          builder: (BuildContext context) => CustomDialog(),
+                          pageBuilder: (context, anim1, anim2) {
+                            return Wrap(
+                              children:<Widget>[
+                                  Material(
+                                    borderRadius: BorderRadius.circular(10),
+                                    child: Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: Colors.white,
+                                  ),
+                                  height: MediaQuery.of(context).size.height *0.3,
+                                  width: MediaQuery.of(context).size.width*0.8,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Column(
+                                      children: <Widget>[
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.end,
+                                          children: <Widget>[
+                                            GestureDetector(
+                                              onTap: (){
+                                                Navigator.pop(context);
+                                              },
+                                              child: Icon(Icons.cancel,size:35,color:primary))
+                                          ],
+                                        ),
+                                        Divider(),
+
+                                        Row(
+                                          children: <Widget>[
+                                            Text("Qty: ", style: TextStyle(
+                                              color: Colors.black87,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 20
+                                            ),),
+                                            SizedBox(width:5),      
+                                            ProductCount(),
+                                          ],
+                                        ),
+                                        SizedBox(height: 30,),
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: <Widget>[
+                                            GestureDetector(
+                                              onTap: (){
+
+                                              },
+                                              child: Container(
+                                                height: 38,
+                                                width: 38,
+                                                decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                  color: secondary,
+                                                ),
+                                                child: Center(
+                                                  child: Icon(
+                                                    Icons.arrow_forward_ios,
+                                                    color: Colors.black87,
+                                                    size: 25,
+                                                  ),
+                                                ),
+                                              ),
+                                            )
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),]
+                            );
+                          
+                          },
+                          transitionBuilder: (context, anim1, anim2, child) {
+                            return SlideTransition(
+                              position: Tween(begin: Offset(0, 1), end: Offset(0.1, 0.66)).animate(anim1),
+                              child: child,
+                            );
+                          },
                         );
+  
                       },
                       color: primary,
                       child: Text("Add To Cart",style: TextStyle(
@@ -514,71 +597,71 @@ class _CouponDescriptionState extends State<CouponDescription> {
                                          borderRadius: BorderRadius.circular(10),
                                          child: Container(
                                       
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: Colors.white,
-                            ),
-                            height: 300,
-                            width: MediaQuery.of(context).size.width*0.9,
-                            child: Padding(
-                              padding: const EdgeInsets.only(right: 8.0,top: 8.0,left:8.0),
-                              child: Column(
-                                    children: <Widget>[
-                                      Row(
-                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                          children: <Widget>[
-                                            Text("Area : ", style: TextStyle(
-                                                color: Colors.black87,
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 20
-                                              ),),
-
-                                            GestureDetector(
-                                                onTap: (){
-                                                  Navigator.pop(context);
-                                                },
-                                                child: Icon(Icons.cancel,size:30,color:primary))
-
-                                          ],
-                                      ),
-                                      Divider(),
-
-                                      Expanded(
-                                          child: ListView.builder(
-                                            shrinkWrap: true,
-                                            scrollDirection: Axis.vertical,
-                                            itemCount: areas.length,
-                                            itemBuilder: (context,index){
-                                              return Column(
-                                                crossAxisAlignment: CrossAxisAlignment.start,
-                                                mainAxisAlignment: MainAxisAlignment.center,
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(10),
+                                          color: Colors.white,
+                                        ),
+                                        height: 300,
+                                        width: MediaQuery.of(context).size.width*0.9,
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(right: 8.0,top: 8.0,left:8.0),
+                                          child: Column(
                                                 children: <Widget>[
-                                                  Center(
-                                                    child: Text(areas[index],style: TextStyle(
-                                                      color: Colors.black87,
-                                                      fontWeight: FontWeight.bold,
-                                                      fontSize: 15
-                                                    ),),
+                                                  Row(
+                                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                      children: <Widget>[
+                                                        Text("Area : ", style: TextStyle(
+                                                            color: Colors.black87,
+                                                            fontWeight: FontWeight.bold,
+                                                            fontSize: 20
+                                                          ),),
+
+                                                        GestureDetector(
+                                                            onTap: (){
+                                                              Navigator.pop(context);
+                                                            },
+                                                            child: Icon(Icons.cancel,size:30,color:primary))
+
+                                                      ],
                                                   ),
+                                                  Divider(),
 
-                                                  Divider()
+                                                  Expanded(
+                                                      child: ListView.builder(
+                                                        shrinkWrap: true,
+                                                        scrollDirection: Axis.vertical,
+                                                        itemCount: areas.length,
+                                                        itemBuilder: (context,index){
+                                                          return Column(
+                                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                                            mainAxisAlignment: MainAxisAlignment.center,
+                                                            children: <Widget>[
+                                                              Center(
+                                                                child: Text(areas[index],style: TextStyle(
+                                                                  color: Colors.black87,
+                                                                  fontWeight: FontWeight.bold,
+                                                                  fontSize: 15
+                                                                ),),
+                                                              ),
+
+                                                              Divider()
+                                                            ],
+
+                                                          );
+                                                        },
+                                                      ),
+                                                  )
                                                 ],
-
-                                              );
-                                            },
                                           ),
-                                      )
-                                    ],
-                              ),
-                            )
-                          ),
-                                       ),]
+                                        )
+                                      ),
+                                    ),]
                                   );
                                 
                                 },
                                 transitionBuilder: (context, anim1, anim2, child) {
                                   return SlideTransition(
-                                    position: Tween(begin: Offset(0, 1), end: Offset(0.05, 0.5)).animate(anim1),
+                                    position: Tween(begin: Offset(0, 1), end: Offset(0.05, 0.55)).animate(anim1),
                                     child: child,
                                   );
                                 },
@@ -670,86 +753,82 @@ class _CouponDescriptionState extends State<CouponDescription> {
 
 
 
-class CustomDialog extends StatelessWidget {
-  
-
-
-
-  @override
-  Widget build(BuildContext context) {
-    return Dialog(
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-      ),      
-      elevation: 0.0,
-      backgroundColor: Colors.transparent,
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: Colors.white,
-        ),
-        height: MediaQuery.of(context).size.height *0.3,
+// class CustomDialog extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Dialog(
+//       shape: RoundedRectangleBorder(
+//           borderRadius: BorderRadius.circular(10),
+//       ),      
+//       elevation: 0.0,
+//       backgroundColor: Colors.transparent,
+//       child: Container(
+//         decoration: BoxDecoration(
+//           borderRadius: BorderRadius.circular(10),
+//           color: Colors.white,
+//         ),
+//         height: MediaQuery.of(context).size.height *0.3,
         
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: <Widget>[
-                  GestureDetector(
-                    onTap: (){
-                      Navigator.pop(context);
-                    },
-                    child: Icon(Icons.cancel,size:30,color:primary))
-                ],
-              ),
-              Divider(),
+//         child: Padding(
+//           padding: const EdgeInsets.all(8.0),
+//           child: Column(
+//             children: <Widget>[
+//               Row(
+//                 mainAxisAlignment: MainAxisAlignment.end,
+//                 children: <Widget>[
+//                   GestureDetector(
+//                     onTap: (){
+//                       Navigator.pop(context);
+//                     },
+//                     child: Icon(Icons.cancel,size:30,color:primary))
+//                 ],
+//               ),
+//               Divider(),
 
-              Row(
-                children: <Widget>[
-                  Text("Qty: ", style: TextStyle(
-                    color: Colors.black87,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20
-                  ),),
+//               Row(
+//                 children: <Widget>[
+//                   Text("Qty: ", style: TextStyle(
+//                     color: Colors.black87,
+//                     fontWeight: FontWeight.bold,
+//                     fontSize: 20
+//                   ),),
 
-                  ProductCount(),
-                ],
-              ),
-              SizedBox(height: 20,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  GestureDetector(
-                    onTap: (){
+//                   ProductCount(),
+//                 ],
+//               ),
+//               SizedBox(height: 20,),
+//               Row(
+//                 mainAxisAlignment: MainAxisAlignment.center,
+//                 children: <Widget>[
+//                   GestureDetector(
+//                     onTap: (){
 
-                    },
-                    child: Container(
-                      height: 35,
-                      width: 35,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: secondary,
-                      ),
-                      child: Center(
-                        child: Icon(
-                          Icons.arrow_forward_ios,
-                          color: Colors.black87,
-                          size: 25,
-                        ),
-                      ),
-                    ),
-                  )
-                ],
-              )
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
+//                     },
+//                     child: Container(
+//                       height: 35,
+//                       width: 35,
+//                       decoration: BoxDecoration(
+//                         shape: BoxShape.circle,
+//                         color: secondary,
+//                       ),
+//                       child: Center(
+//                         child: Icon(
+//                           Icons.arrow_forward_ios,
+//                           color: Colors.black87,
+//                           size: 25,
+//                         ),
+//                       ),
+//                     ),
+//                   )
+//                 ],
+//               )
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
 
 
 
@@ -780,24 +859,24 @@ class _ProductCountState extends State<ProductCount> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           new MaterialButton(
-            minWidth: 30,
-            onPressed: add,
-            child: Center(child: new Icon(Icons.add, color: Colors.white,)),
+            minWidth: 15,
+            onPressed: minus,
+            child: Center(child: new Icon(Feather.minus, color: Colors.white,size: 15,)),
             color: primary,
             ),
 
           Container(
-            width: 50,
+            width: 40,
             child: Center(
               child: new Text('$_n',
-                  style: new TextStyle(fontSize: 18.0)),
+                  style: new TextStyle(fontSize: 20.0)),
             ),
           ),
 
           new MaterialButton(
-            minWidth: 30,
-            onPressed: minus,
-            child: Center(child: new Icon(Icons.minimize, color: Colors.white,)),
+            minWidth: 15,
+            onPressed: add,
+            child: Center(child: Container(child: new Icon(Icons.add, color: Colors.white,size: 20,))),
             color: primary,
             ),
         ],

@@ -360,34 +360,7 @@ class _HomePageState extends State<HomePage> {
           backgroundColor: primary,
           
           actions: <Widget>[
-            // Padding(
-            //   padding: const EdgeInsets.all(8.0),
-            //   child: Stack(
-            //     children: <Widget>[
-            //       Icon(Icons.notifications,size: 25,color: Colors.white,),
-            //        new Positioned(
-            //       top: 0.0,
-            //       right: 0.0,
-            //       child: new Stack(
-            //         children: <Widget>[
-            //           new Icon(Icons.brightness_1,
-            //               size: 15.0, color: Color.fromRGBO(253,210,8,1.0)),
-            //           new Positioned(
-            //             top: 0.5,
-            //             right: 5.0,
-            //             child: new Text("1",
-            //                 textAlign: TextAlign.center,
-            //                 style: new TextStyle(
-            //                     color: Colors.black,
-            //                     fontSize: 10.0,
-            //                     fontWeight: FontWeight.w500)),
-            //           )
-            //         ],
-            //       ),
-            //     )
-            //     ],
-            //   ),
-            // ),
+           
 
             Padding(
               padding: const EdgeInsets.only(right:10.0,top:5),
@@ -418,22 +391,13 @@ class _HomePageState extends State<HomePage> {
                   padding: const EdgeInsets.all(0.0),
                   child: Center(
                     
-                    child: RichText(
-                      // textAlign: TextAlign.center,
-                            text: TextSpan(
-                              children: [
-                                TextSpan(
-                                text:"24 ",style: TextStyle(color: Colors.black,fontSize: 15,fontWeight: FontWeight.bold)
-                                ),
-                                TextSpan(
-                                  text:"H",style: TextStyle(color: primary,fontSize: 10,fontWeight: FontWeight.bold)
-                                ),
-                                TextSpan(
-                                  text:"D",style: TextStyle(color: Color.fromRGBO(253,210,8,1.0),fontSize: 10,fontWeight: FontWeight.bold)
-                                ),
-                              ],
-                            ),
-                          ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+
+                      Text("24 ",style: TextStyle(color: Colors.black,fontSize: 16,fontWeight: FontWeight.bold)),
+                      Image.asset("images/menu/hd6.png",height: 15,width: 15,)
+                    ],)
                   ),
                 ),
               ),
@@ -537,7 +501,7 @@ class _HomePageState extends State<HomePage> {
                   padding: const EdgeInsets.only(top:5.0),
                   child: HomeGridCategories(),
                 ),
-                Padding(padding: const EdgeInsets.only(top:13.0,left:8.0,right: 8.0,),
+                Padding(padding: const EdgeInsets.only(top:13.0,left:8.0,right: 8.0,bottom: 13),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
@@ -550,14 +514,11 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left:8.0,right: 8.0,bottom: 0),
-                  child: Container(
-                    // width: MediaQuery.of(context).size.width,
-                    child: CouponCardList()),
-                ),
+                Container(
+                  // width: MediaQuery.of(context).size.width,
+                  child: CouponCardList()),
                 AdBanner(),
-                Padding(padding: const EdgeInsets.only(top:0.0,left:8.0,right: 8.0,),
+                Padding(padding: const EdgeInsets.only(top:20.0,left:8.0,right: 8.0,bottom: 15),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
@@ -572,10 +533,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
 
-                Padding(
-                  padding: const EdgeInsets.only(left:8.0,right: 8.0,bottom: 0),
-                  child: CouponCardList(),
-                ),
+                CouponCardList(),
 
                 Padding(padding: const EdgeInsets.only(top:13.0,left:8.0,right: 8.0,),
                   child: Row(

@@ -74,7 +74,7 @@ class _BottomNavState extends State<BottomNav> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Image.asset("images/home-run 2.png",color: currentTab == 0 ?secondary : Colors.white, height: 20),
+                          Image.asset("images/home.png",color: currentTab == 0 ?secondary : Colors.white, height: 20),
                           Text(
                             'Home',
                             style: TextStyle(

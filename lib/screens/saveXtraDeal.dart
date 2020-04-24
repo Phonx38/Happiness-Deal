@@ -20,6 +20,7 @@ class _SaveXtraDealState extends State<SaveXtraDeal> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(40),
         child: AppBar(
@@ -35,7 +36,7 @@ class _SaveXtraDealState extends State<SaveXtraDeal> {
                       
                           child: Padding(
                             padding: const EdgeInsets.all(4.0),
-                            child: Icon(Icons.sort,size: 20,),
+                            child: Icon(Icons.arrow_back_ios,size: 20,),
                           ),
                           onTap: () => Scaffold.of(context).openDrawer(),
                           // tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
@@ -105,7 +106,7 @@ class _SaveXtraDealState extends State<SaveXtraDeal> {
                         
                       ],
                     ),
-                    Padding(padding: const EdgeInsets.only(top:13.0,left:8.0,right: 8.0,),
+                    Padding(padding: const EdgeInsets.only(top:13.0,left:8.0,right: 8.0,bottom: 8.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
@@ -114,10 +115,7 @@ class _SaveXtraDealState extends State<SaveXtraDeal> {
                         ],
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: SingleChildScrollView(child: CouponCardList(),),
-                    )
+                    SingleChildScrollView(child: CouponCardList(),)
                   ],
                 ),
               ),

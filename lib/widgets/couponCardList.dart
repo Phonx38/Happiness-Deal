@@ -23,8 +23,11 @@ class CouponCardList extends StatelessWidget {
             width:MediaQuery.of(context).size.width,
             child: Padding(
               padding: const EdgeInsets.only(bottom:8.0),
-              child: CouponCard(
-                coupon:couponCards[index]
+              child: Padding(
+                padding: const EdgeInsets.only(left:2.0,right: 2.0),
+                child: CouponCard(
+                  coupon:couponCards[index]
+                ),
               ),
             ),
           );

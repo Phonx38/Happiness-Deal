@@ -18,7 +18,7 @@ class _AdBannerState extends State<AdBanner> {
     return  CarouselSlider(
       // autoPlayCurve: Curves.easeInOutBack,
       viewportFraction: 0.9,
-      aspectRatio: 3.0,
+      aspectRatio: 2.5,
       autoPlay: true,
       enlargeCenterPage: true,
       items: imgList.map(
