@@ -53,285 +53,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      drawer: ClipRRect(
-        borderRadius: BorderRadius.only(
-          topRight: Radius.circular(20),
-          bottomRight: Radius.circular(20)
-        ),
-        child: Container(
-          width: 200,
-          child: new Drawer(
-            elevation: 10,
-            child:  ListView(
-              children: <Widget>[
-                Stack(
-                  children: <Widget>[
-                    Container(
-                      height: 170,
-                      child: Image.asset(
-                        "images/menu/menuback.png",
-                        fit:BoxFit.fill
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(top:15),
-                      child: Center(
-                        child: Image.asset(
-                        "images/menu/menuLogo.png",
-                        height: 80,
-                        width: 80,
-                        fit:BoxFit.fill
-                      ),
-                        ),
-                    ),
-
-                   _currentUser ? Positioned(
-                      bottom: 10,
-                      left: 20,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              Container(
-                                
-                                child:Column(
-                                  children: <Widget>[
-                                    Text("Welcome ",
-                                    
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 13,
-                                      color: Colors.black87
-                                    ),),
-                                    Text("Purusharth",
-                                    
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 13,
-                                      color: Colors.black87
-                                    ),),
-                                  ],
-                                ),
-
-                              
-                              ),
-                              SizedBox(width: 30,),
-                              Container(
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle
-                                ),
-                                child: Image.asset('images/menu/defaultImg.png',fit: BoxFit.fill,height: 30,width: 30,),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    ) : Positioned(
-                      bottom: 10,
-                      left: 60,
-                      child: Container(
-                        child: Center(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Text("LOGIN",style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 14
-                              ),),
-                              SizedBox(width:10),
-                              Container(
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Colors.black87,
-                                ),
-                                
-                                child: Image.asset("images/menu/enter1.png",fit: BoxFit.fill,
-                                
-                                height: 30,
-                                width: 30,),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-
-                Padding(
-                 padding: const EdgeInsets.only(left:15.0,top: 8.0,bottom: 2.0,right: 8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      
-                        _currentUser ?Image.asset("images/menu/hd6.png",height: 20,width: 20,):Image.asset("images/menu/hd1.png",height: 20,width: 20,),
-                        SizedBox(width:10),
-                      Text('Food Deals') ,
-                       
-                    ],
-                  ),
-                ),
-                Divider(),
-                Padding(
-                  padding: const EdgeInsets.only(left:15.0,top: 2.0,bottom: 2.0,right: 8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      
-                        _currentUser ?Image.asset("images/menu/hd6.png",height: 20,width: 20,):Image.asset("images/menu/hd2.png",height: 20,width: 20,),
-                        SizedBox(width:10),
-                      Text('Fashion Deals') ,
-                       
-                    ],
-                  ),
-                ),
-                Divider(),
-                
-
-                Padding(
-                 padding: const EdgeInsets.only(left:15.0,top: 2.0,bottom: 2.0,right: 8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      
-                        _currentUser ?Image.asset("images/menu/hd6.png",height: 20,width: 20,):Image.asset("images/menu/hd3.png",height: 20,width: 20,),
-                        SizedBox(width:10),
-                      Text('Other Deals') ,
-                       
-                    ],
-                  ),
-                ),
-                Divider(),
-                Padding(
-                  padding: const EdgeInsets.only(left:15.0,top: 2.0,bottom: 2.0,right: 8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      
-                        _currentUser ?Image.asset("images/menu/hd6.png",height: 20,width: 20,):Image.asset("images/menu/hd5.png",height: 20,width: 20,),
-                        SizedBox(width:10),
-                      Text('Reward Benefits') ,
-                       
-                    ],
-                  ),
-                ),
-                Divider(),
-                Padding(
-                  padding: const EdgeInsets.only(left:15.0,top: 2.0,bottom: 2.0,right: 8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      
-                         _currentUser ?Image.asset("images/menu/hd6.png",height: 20,width: 20,):Image.asset("images/menu/order.png",height: 20,width: 20,),
-                        SizedBox(width:10),
-                      Text('Orders') ,
-                       
-                    ],
-                  ),
-                ),
-                Divider(),
-                
-
-                Padding(
-                  padding: const EdgeInsets.only(left:15.0,top: 2.0,bottom: 2.0,right: 8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      
-                         _currentUser ?Image.asset("images/menu/hd6.png",height: 20,width: 20,):Image.asset("images/menu/heart.png",height: 20,width: 20,),
-                        SizedBox(width:10),
-                      Text('Wishlist') ,
-                       
-                    ],
-                  ),
-                ),
-                Divider(),
-                Padding(
-                  padding: const EdgeInsets.only(left:15.0,top: 2.0,bottom: 2.0,right: 8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      
-                         _currentUser ?Image.asset("images/menu/hd6.png",height: 20,width: 20,):Image.asset("images/menu/hdd.png",height: 20,width: 20,),
-                        SizedBox(width:10),
-                      Text('HD Points') ,
-                       
-                    ],
-                  ),
-                ),
-                Divider(),
-                Padding(
-                  padding: const EdgeInsets.only(left:15.0,top: 2.0,bottom: 2.0,right: 8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      
-                         _currentUser ?Image.asset("images/menu/hd6.png",height: 20,width: 20,):Image.asset("images/menu/share.png",height: 20,width: 20,),
-                        SizedBox(width:10),
-                      Text('Refer & Earn') ,
-                       
-                    ],
-                  ),
-                ),
-                Divider(),
-                Padding(
-                  padding: const EdgeInsets.only(left:15.0,top: 2.0,bottom: 2.0,right: 8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      
-                        _currentUser ?Image.asset("images/menu/hd6.png",height: 20,width: 20,):Image.asset("images/menu/faq.png",height: 20,width: 20,),
-                        SizedBox(width:10),
-                      Text('Faqs') ,
-                       
-                    ],
-                  ),
-                ),
-                Divider(),
-                Padding(
-                  padding: const EdgeInsets.only(left:15.0,top: 2.0,bottom: 2.0,right: 8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      
-                        _currentUser ?Image.asset("images/menu/hd6.png",height: 20,width: 20,):Image.asset("images/menu/membership.png",height: 20,width: 20,),
-                        SizedBox(width:10),
-                      Text('Gold Membership') ,
-                       
-                    ],
-                  ),
-                ),
-                Divider(),
-                SizedBox(height:65),
-               _currentUser? Container(
-                  height: 40,
-                  color: Color.fromRGBO(253,210,8,1.0),
-                 child: Row(
-
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.only(left: 20),
-                        child: Text("LOGOUT",style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14
-                        ),),
-                      ),
-                      SizedBox(width:20),
-                      Image.asset("images/menu/arrowmenu.png",fit: BoxFit.fill,
-                      
-                      height: 20,
-                      width: 20,)
-                    ],
-                  )
-                ):Container()
-              ],
-            ),
-          ),
-        ),
-      ),
+      drawer: CustomDrawer(currentUser: _currentUser),
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(40),
         child: AppBar(
@@ -417,6 +139,7 @@ class _HomePageState extends State<HomePage> {
         child: SafeArea(
           
           child: SingleChildScrollView(
+            controller: _scrollController,
             child: Column(
               children: <Widget>[
                 Container(
@@ -585,6 +308,298 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
        
+    );
+  }
+}
+
+class CustomDrawer extends StatelessWidget {
+  const CustomDrawer({
+    Key key,
+    @required bool currentUser,
+  }) : _currentUser = currentUser, super(key: key);
+
+  final bool _currentUser;
+
+  @override
+  Widget build(BuildContext context) {
+    return ClipRRect(
+      borderRadius: BorderRadius.only(
+        topRight: Radius.circular(20),
+        bottomRight: Radius.circular(20)
+      ),
+      child: Container(
+        width: 200,
+        child: new Drawer(
+          elevation: 10,
+          child:  ListView(
+            children: <Widget>[
+              Stack(
+                children: <Widget>[
+                  Container(
+                    height: 170,
+                    child: Image.asset(
+                      "images/menu/menuback.png",
+                      fit:BoxFit.fill
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(top:15),
+                    child: Center(
+                      child: Image.asset(
+                      "images/menu/menuLogo.png",
+                      height: 80,
+                      width: 80,
+                      fit:BoxFit.fill
+                    ),
+                      ),
+                  ),
+
+                 _currentUser ? Positioned(
+                    bottom: 10,
+                    left: 20,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Container(
+                              
+                              child:Column(
+                                children: <Widget>[
+                                  Text("Welcome ",
+                                  
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 13,
+                                    color: Colors.black87
+                                  ),),
+                                  Text("Purusharth",
+                                  
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 13,
+                                    color: Colors.black87
+                                  ),),
+                                ],
+                              ),
+
+                            
+                            ),
+                            SizedBox(width: 30,),
+                            Container(
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle
+                              ),
+                              child: Image.asset('images/menu/defaultImg.png',fit: BoxFit.fill,height: 30,width: 30,),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ) : Positioned(
+                    bottom: 10,
+                    left: 60,
+                    child: Container(
+                      child: Center(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Text("LOGIN",style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14
+                            ),),
+                            SizedBox(width:10),
+                            Container(
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Colors.black87,
+                              ),
+                              
+                              child: Image.asset("images/menu/enter1.png",fit: BoxFit.fill,
+                              
+                              height: 30,
+                              width: 30,),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+
+              Padding(
+               padding: const EdgeInsets.only(left:15.0,top: 8.0,bottom: 2.0,right: 8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    
+                      _currentUser ?Image.asset("images/menu/hd6.png",height: 20,width: 20,):Image.asset("images/menu/hd1.png",height: 20,width: 20,),
+                      SizedBox(width:10),
+                    Text('Food Deals') ,
+                     
+                  ],
+                ),
+              ),
+              Divider(),
+              Padding(
+                padding: const EdgeInsets.only(left:15.0,top: 2.0,bottom: 2.0,right: 8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    
+                      _currentUser ?Image.asset("images/menu/hd6.png",height: 20,width: 20,):Image.asset("images/menu/hd2.png",height: 20,width: 20,),
+                      SizedBox(width:10),
+                    Text('Fashion Deals') ,
+                     
+                  ],
+                ),
+              ),
+              Divider(),
+              
+
+              Padding(
+               padding: const EdgeInsets.only(left:15.0,top: 2.0,bottom: 2.0,right: 8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    
+                      _currentUser ?Image.asset("images/menu/hd6.png",height: 20,width: 20,):Image.asset("images/menu/hd3.png",height: 20,width: 20,),
+                      SizedBox(width:10),
+                    Text('Other Deals') ,
+                     
+                  ],
+                ),
+              ),
+              Divider(),
+              Padding(
+                padding: const EdgeInsets.only(left:15.0,top: 2.0,bottom: 2.0,right: 8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    
+                      _currentUser ?Image.asset("images/menu/hd6.png",height: 20,width: 20,):Image.asset("images/menu/hd5.png",height: 20,width: 20,),
+                      SizedBox(width:10),
+                    Text('Reward Benefits') ,
+                     
+                  ],
+                ),
+              ),
+              Divider(),
+              Padding(
+                padding: const EdgeInsets.only(left:15.0,top: 2.0,bottom: 2.0,right: 8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    
+                       _currentUser ?Image.asset("images/menu/hd6.png",height: 20,width: 20,):Image.asset("images/menu/order.png",height: 20,width: 20,),
+                      SizedBox(width:10),
+                    Text('Orders') ,
+                     
+                  ],
+                ),
+              ),
+              Divider(),
+              
+
+              Padding(
+                padding: const EdgeInsets.only(left:15.0,top: 2.0,bottom: 2.0,right: 8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    
+                       _currentUser ?Image.asset("images/menu/hd6.png",height: 20,width: 20,):Image.asset("images/menu/heart.png",height: 20,width: 20,),
+                      SizedBox(width:10),
+                    Text('Wishlist') ,
+                     
+                  ],
+                ),
+              ),
+              Divider(),
+              Padding(
+                padding: const EdgeInsets.only(left:15.0,top: 2.0,bottom: 2.0,right: 8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    
+                       _currentUser ?Image.asset("images/menu/hd6.png",height: 20,width: 20,):Image.asset("images/menu/hdd.png",height: 20,width: 20,),
+                      SizedBox(width:10),
+                    Text('HD Points') ,
+                     
+                  ],
+                ),
+              ),
+              Divider(),
+              Padding(
+                padding: const EdgeInsets.only(left:15.0,top: 2.0,bottom: 2.0,right: 8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    
+                       _currentUser ?Image.asset("images/menu/hd6.png",height: 20,width: 20,):Image.asset("images/menu/share.png",height: 20,width: 20,),
+                      SizedBox(width:10),
+                    Text('Refer & Earn') ,
+                     
+                  ],
+                ),
+              ),
+              Divider(),
+              Padding(
+                padding: const EdgeInsets.only(left:15.0,top: 2.0,bottom: 2.0,right: 8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    
+                      _currentUser ?Image.asset("images/menu/hd6.png",height: 20,width: 20,):Image.asset("images/menu/faq.png",height: 20,width: 20,),
+                      SizedBox(width:10),
+                    Text('Faqs') ,
+                     
+                  ],
+                ),
+              ),
+              Divider(),
+              Padding(
+                padding: const EdgeInsets.only(left:15.0,top: 2.0,bottom: 2.0,right: 8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    
+                      _currentUser ?Image.asset("images/menu/hd6.png",height: 20,width: 20,):Image.asset("images/menu/membership.png",height: 20,width: 20,),
+                      SizedBox(width:10),
+                    Text('Gold Membership') ,
+                     
+                  ],
+                ),
+              ),
+              Divider(),
+              SizedBox(height:65),
+             _currentUser? Container(
+                height: 40,
+                color: Color.fromRGBO(253,210,8,1.0),
+               child: Row(
+
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20),
+                      child: Text("LOGOUT",style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14
+                      ),),
+                    ),
+                    SizedBox(width:20),
+                    Image.asset("images/menu/arrowmenu.png",fit: BoxFit.fill,
+                    
+                    height: 20,
+                    width: 20,)
+                  ],
+                )
+              ):Container()
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
