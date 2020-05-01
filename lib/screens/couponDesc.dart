@@ -1,5 +1,6 @@
 
 import 'package:couponzz/models/coupon.dart';
+import 'package:couponzz/screens/merchantScreen.dart';
 import 'package:couponzz/shared/common.dart';
 import 'package:flutter/material.dart';
 
@@ -140,7 +141,7 @@ class _CouponDescriptionState extends State<CouponDescription> {
                                         Row(
                                           mainAxisAlignment: MainAxisAlignment.end,
                                           children: <Widget>[
-                                            GestureDetector(
+                                            InkWell(
                                               onTap: (){
                                                 Navigator.pop(context);
                                               },
@@ -164,7 +165,7 @@ class _CouponDescriptionState extends State<CouponDescription> {
                                         Row(
                                           mainAxisAlignment: MainAxisAlignment.center,
                                           children: <Widget>[
-                                            GestureDetector(
+                                            InkWell(
                                               onTap: (){
 
                                               },
@@ -232,7 +233,7 @@ class _CouponDescriptionState extends State<CouponDescription> {
                     margin: EdgeInsets.only(top:0,left: 0),
                     elevation: 4.0,
                     color: primary,
-                    child: GestureDetector(
+                    child: InkWell(
                       
                           child: Padding(
                             padding: const EdgeInsets.all(4.0),
@@ -264,17 +265,21 @@ class _CouponDescriptionState extends State<CouponDescription> {
                   width: MediaQuery.of(context).size.width,
                   child: Stack(
                         children: <Widget>[
+                        
                           HomePageBg(screenHeight: MediaQuery.of(context).size.height* 0.20,color: primary,),
-                          Center(
-                            child: Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10)
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Center(
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10)
+                                ),
+                                height: MediaQuery.of(context).size.height*0.26,
+                                width: MediaQuery.of(context).size.width*0.95,
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(10),
+                                  child: Image.asset(widget.coupon.couponImg,fit: BoxFit.fill,)),
                               ),
-                              height: MediaQuery.of(context).size.height*0.26,
-                              width: MediaQuery.of(context).size.width*0.95,
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(10),
-                                child: Image.asset(widget.coupon.couponImg,fit: BoxFit.fill,)),
                             ),
                           ),
                           Positioned(
@@ -329,7 +334,7 @@ class _CouponDescriptionState extends State<CouponDescription> {
                               ),
                             ),
                           ),
-                          GestureDetector(  
+                          InkWell(  
                             child: _favBtn ? Icon(Icons.favorite,color: Colors.redAccent,size: 25,) : Icon(Icons.favorite_border,color: Colors.black,size: 27) ,
                               onTap: (){setState(() {
                                 _favBtn = !_favBtn;
@@ -339,6 +344,30 @@ class _CouponDescriptionState extends State<CouponDescription> {
                           )
                       ],
                     ),
+                  ),
+                ),
+                
+
+                Padding(
+                  padding: const EdgeInsets.only(left:12.0,right:15.0,top:20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Icon(FontAwesome.rupee,size:25),
+                      Text("250",style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        color: Colors.black87
+                      ),),
+                      SizedBox(width: 5,),
+
+                      Text("300",style: TextStyle(
+                        decoration: TextDecoration.lineThrough,
+                        // fontWeight: FontWeight.bold,
+                        fontSize: 15,
+                      ),)
+                    ],
                   ),
                 ),
                 Padding(
@@ -356,7 +385,7 @@ class _CouponDescriptionState extends State<CouponDescription> {
                                 Image.asset("images/calendar.png",height: 13,width: 13,fit: BoxFit.fill,),
                                 SizedBox(width:2),
                                 Text("Valid Till: ${widget.coupon.startDate}",style: TextStyle(
-                                  color: Colors.black87,
+                                  color: Colors.grey[600],
                                   fontSize: 10,
                                   fontWeight: FontWeight.bold
                                 ),)
@@ -373,7 +402,7 @@ class _CouponDescriptionState extends State<CouponDescription> {
                                 Image.asset("images/discounticon.png",height: 15,width: 15,fit: BoxFit.fill,),
                                 SizedBox(width:2),
                                 Text("Happy Hour Deal",style: TextStyle(
-                                  color: Colors.black87,
+                                  color: Colors.grey[600],
                                   fontSize: 10,
                                   fontWeight: FontWeight.bold
                                 ),)
@@ -390,7 +419,7 @@ class _CouponDescriptionState extends State<CouponDescription> {
                                 Image.asset("images/timer1.png",height: 15,width: 15,fit: BoxFit.fill,),
                                 SizedBox(width:2),
                                 Text("3:00PM - 4:00PM ",style: TextStyle(
-                                  color: Colors.black87,
+                                  color: Colors.grey[600],
                                   fontSize: 10,
                                   fontWeight: FontWeight.bold
                                 ),)
@@ -442,19 +471,25 @@ class _CouponDescriptionState extends State<CouponDescription> {
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
+                      
                       Expanded(
-                        child: RichText(
-                                  text: TextSpan(
-                                    children: [
-                                      TextSpan(
-                                      text:"${widget.coupon.dealBy}",style: TextStyle(fontSize: 20,color: Colors.black,fontWeight: FontWeight.bold,fontFamily: "Montserrat-Medium")
+                        child: InkWell(
+                          onTap: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>MerchantScreen()));
+                          },
+                          child: RichText(
+                                    text: TextSpan(
+                                      children: [
+                                        TextSpan(
+                                        text:"${widget.coupon.dealBy}",style: TextStyle(fontSize: 20,color: Colors.black,fontWeight: FontWeight.bold,fontFamily: "Montserrat-Medium")
+                                      ),
+                                       TextSpan(
+                                        text:"(3 Outlets)",style: TextStyle(fontSize: 13,color: Colors.black54,fontFamily: "Montserrat-Medium")
+                                      )
+                                      ]
                                     ),
-                                     TextSpan(
-                                      text:"(3 Outlets)",style: TextStyle(fontSize: 13,color: Colors.black54,fontFamily: "Montserrat-Medium")
-                                    )
-                                    ]
                                   ),
-                                ),
+                        ),
                       ),
                     ],
                   ),
@@ -581,7 +616,7 @@ class _CouponDescriptionState extends State<CouponDescription> {
                             color:secondary,
                             )),
                         Expanded(
-                          child: GestureDetector(
+                          child: InkWell(
                             onTap: (){
 
                               showGeneralDialog(
@@ -616,7 +651,7 @@ class _CouponDescriptionState extends State<CouponDescription> {
                                                             fontSize: 20
                                                           ),),
 
-                                                        GestureDetector(
+                                                        InkWell(
                                                             onTap: (){
                                                               Navigator.pop(context);
                                                             },
@@ -703,7 +738,7 @@ class _CouponDescriptionState extends State<CouponDescription> {
                        fontSize: 18,
                        color: Colors.black87
                      ),),
-                     GestureDetector(  
+                     InkWell(  
                             child: _arw ? Icon(Icons.keyboard_arrow_down,color: Colors.black87,size: 30,) : Icon(Icons.keyboard_arrow_right,color: Colors.black,size: 30) ,
                               onTap: (){setState(() {
                                _arw = !_arw;

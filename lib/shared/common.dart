@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 final primary = Color.fromRGBO(76,167,223,1);
     final secondary =  Color.fromRGBO(253,210,8,1.0);
-
+final dividerColor =  Color.fromRGBO(240,244,247,1);
  
 const kMessageTextFieldDecoration = InputDecoration(
   contentPadding: EdgeInsets.symmetric(vertical: 0.0, horizontal: 20.0),

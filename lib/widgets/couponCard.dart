@@ -32,7 +32,7 @@ class _CouponCardState extends State<CouponCard> {
           padding: const EdgeInsets.only(bottom:0.0,left: 4,right: 4,),
           child: ClipPath(
             clipper: TicketClipper(12.0),
-            child: GestureDetector(
+            child: InkWell(
               onTap: (){
                 Navigator.push(context, MaterialPageRoute(builder: (context)=>CouponDescription(
                   coupon: widget.coupon,
@@ -85,7 +85,7 @@ class _CouponCardState extends State<CouponCard> {
                            ),
                           Expanded(
                             child: Container(
-                              width: MediaQuery.of(context).size.width*0.63,
+                              width: MediaQuery.of(context).size.width*0.60,
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -108,7 +108,7 @@ class _CouponCardState extends State<CouponCard> {
                                               ),
                                               SizedBox(width: 2,),
                                               Container(
-                                                width: MediaQuery.of(context).size.width *0.51,
+                                                width: MediaQuery.of(context).size.width *0.49,
                                                 child: Text(widget.coupon.dealBy,style: TextStyle(color: Color.fromRGBO(31,90,135,1),fontWeight: FontWeight.bold,fontSize: 15),)),
 
                                             ],
@@ -121,7 +121,7 @@ class _CouponCardState extends State<CouponCard> {
                                           padding: const EdgeInsets.only(right:8.0),
                                           child: Container(
                                             width: 30,
-                                            child: GestureDetector(  
+                                            child: InkWell(  
                                               child: _favBtn ? Icon(Icons.favorite,color: Colors.redAccent,) : Icon(Icons.favorite_border,color: Colors.black,) ,
                                                 onTap: (){setState(() {
                                                   _favBtn = !_favBtn;

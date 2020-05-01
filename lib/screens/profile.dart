@@ -23,6 +23,9 @@ class _ProfileState extends State<Profile> {
    String lastName;
     int mobileNo;
     int pincode;
+
+  bool _enabled = true;
+
    final _formKey = GlobalKey();
 
   bool _currentUser =false;
@@ -30,13 +33,14 @@ class _ProfileState extends State<Profile> {
 
     List gender=["Male","Female"];
 
-  String select;
+  String select; 
 
  Row addRadioButton(int btnValue, String title) {
     return Row(
   mainAxisAlignment: MainAxisAlignment.start,
   children: <Widget>[
     Radio(
+      
       activeColor: Colors.black87,
       value: gender[btnValue],
       groupValue: select,
@@ -53,7 +57,7 @@ class _ProfileState extends State<Profile> {
  }
 
 
-   String _selectedDate = 'Tap to select date';
+   String _selectedDate = 'Select Date of Birth';
 
   Future<void> _selectDate(BuildContext context) async {
     final DateTime d = await showDatePicker(
@@ -277,6 +281,7 @@ class _ProfileState extends State<Profile> {
                                Container(
                                 width: 150,
                                 child: TextFormField(
+                                  enabled: _enabled,
                                   validator: Validators.required('First name is required'),
                                   decoration: InputDecoration(
                                     focusedBorder:  new UnderlineInputBorder(
@@ -305,6 +310,7 @@ class _ProfileState extends State<Profile> {
                               Container(
                                 width: 150,
                                 child: TextFormField(
+                                  enabled: _enabled,
                                   validator: Validators.required('Last name is required'),
                                   decoration: InputDecoration(
                                     focusedBorder:  new UnderlineInputBorder(
@@ -335,6 +341,7 @@ class _ProfileState extends State<Profile> {
                           Container(
                             height: 20,
                             child: TextFormField(
+                              enabled: _enabled,
                               keyboardType: TextInputType.number,
                               validator:Validators.min(10, 'Invalid number'),
                                     decoration: InputDecoration(
@@ -371,6 +378,7 @@ class _ProfileState extends State<Profile> {
                           Container(
                             height: 20,
                             child: TextFormField(
+                              enabled: _enabled,
                               keyboardType: TextInputType.emailAddress,
                               validator: Validators.email('Invalid Email'),
                                     decoration: InputDecoration(
@@ -483,6 +491,7 @@ class _ProfileState extends State<Profile> {
                           Container(
                             height: 20,
                             child: TextFormField(
+                              enabled: _enabled,
                               validator: Validators.min(6, "Invalid Pincode"),
                                     decoration: InputDecoration(
                                       focusedBorder:  new UnderlineInputBorder(
@@ -518,46 +527,6 @@ class _ProfileState extends State<Profile> {
 
                                 addRadioButton(0, 'Male'),
                                 addRadioButton(1, 'Female'),
-                                // Row(
-                                //   children: <Widget>[
-                                //     GestureDetector(
-                                //       onTap: (){
-
-                                //       },
-                                //       child: Container(
-                                //        height: 30,
-                                //        width: 30,
-                                //        decoration: BoxDecoration(
-                                         
-                                //         shape: BoxShape.circle,
-                                //         color: _isFemale ? textline:Colors.grey
-                                //        ),
-                                //    ),
-                                //     ),
-                                //     SizedBox(width: 10,),
-                                //     Text("Male",style: TextStyle(
-                                //       fontWeight: FontWeight.bold
-                                //     ),)
-                                //   ],
-                                // ),
-                                // SizedBox(width: 50,),
-                                // Row(
-                                //   children: <Widget>[
-                                //    Container(
-                                //      height: 30,
-                                //      width: 30,
-                                //      decoration: BoxDecoration(
-                                       
-                                //       shape: BoxShape.circle,
-                                //       color: _isMale ? textline:Colors.grey
-                                //      ),
-                                //    ),
-                                //     SizedBox(width: 10,),
-                                //     Text("Female",style: TextStyle(
-                                //       fontWeight: FontWeight.bold
-                                //     ),)
-                                //   ],
-                                // )
                               ],
                             ),
                           ),
@@ -600,20 +569,92 @@ class _ProfileState extends State<Profile> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: <Widget>[
-                                Container(
-                                  
-                                  
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: secondary,
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text(
-                                      'Save',
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 18
+                                GestureDetector(
+                                  onTap: (){
+                                    setState(() {
+                                      
+                                      _enabled = !_enabled;
+                                    });
+                                    showDialog(
+                                      
+                                      context: context,
+                                      builder: (BuildContext context){
+                                        return Dialog(
+                                          insetAnimationDuration: Duration(seconds: 20),
+                                          insetAnimationCurve: Curves.bounceInOut,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(10)
+                                          ),
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Container(
+                                            height: MediaQuery.of(context).size.height*0.3,
+                                            child: Column(
+                                              children: <Widget>[
+                                                Row(
+                                                  mainAxisAlignment: MainAxisAlignment.end,
+                                                  children: <Widget>[
+                                                    GestureDetector(
+                                                      onTap: (){
+                                                        Navigator.pop(context);
+                                                      },
+                                                      child: Icon(Icons.cancel,size: 30,color: primary,))
+                                                  ],
+                                                ),
+
+                                                Row(
+                                                  mainAxisAlignment: MainAxisAlignment.center,
+                                                  children: <Widget>[
+                                                    Image.asset('images/profileicon/confirm.png',height:80,width:80,fit:BoxFit.fill)
+                                                  ],
+                                                ),
+                                                Row(
+                                                  mainAxisAlignment: MainAxisAlignment.center,
+                                                  children: <Widget>[
+                                                    Text('Saved',
+                                                    style: TextStyle(
+                                                      fontSize: 20,fontWeight: FontWeight.bold,
+                                                      color: Colors.black87,
+                                                    ),
+                                                    )
+                                                  ],
+                                                ),
+                                                SizedBox(height: 20,),
+
+                                                Row(
+                                                  mainAxisAlignment: MainAxisAlignment.center,
+                                                  children: <Widget>[
+                                                    Text('Profile saved successfully.',
+                                                    style: TextStyle(
+                                                      fontSize: 16,fontWeight: FontWeight.bold,
+                                                      color: Colors.black87,
+                                                    ),
+                                                    )
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                      ),
+                                          ),
+                                        );
+                                      },
+                                      
+                                      
+                                      );
+                                  },
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: secondary,
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text(
+                                        _enabled?'Save':'Edit',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 18
+                                        ),
                                       ),
                                     ),
                                   ),

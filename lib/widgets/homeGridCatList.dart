@@ -42,7 +42,7 @@ class HomeGridCategories extends StatelessWidget {
               
               child: Column(
                 children: <Widget>[
-                  GestureDetector(
+                  InkWell(
                     onTap: (){
                       Navigator.push(context, MaterialPageRoute(builder: (context)=>CategoryDetail()));
                     },
