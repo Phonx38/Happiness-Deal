@@ -2,6 +2,7 @@
 import 'package:couponzz/models/coupon.dart';
 import 'package:couponzz/screens/merchantScreen.dart';
 import 'package:couponzz/shared/common.dart';
+import 'package:couponzz/shared/transitions.dart';
 import 'package:flutter/material.dart';
 
 
@@ -475,7 +476,7 @@ class _CouponDescriptionState extends State<CouponDescription> {
                       Expanded(
                         child: InkWell(
                           onTap: (){
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>MerchantScreen()));
+                            Navigator.push(context, SlideLeftRoute(page:MerchantScreen()));
                           },
                           child: RichText(
                                     text: TextSpan(

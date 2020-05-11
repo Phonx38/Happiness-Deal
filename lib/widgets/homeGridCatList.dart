@@ -3,6 +3,7 @@
 
 
 import 'package:couponzz/screens/categoryDescription.dart';
+import 'package:couponzz/shared/transitions.dart';
 import 'package:flutter/material.dart';
 
 List<Category> categoriesList = [
@@ -44,7 +45,7 @@ class HomeGridCategories extends StatelessWidget {
                 children: <Widget>[
                   InkWell(
                     onTap: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>CategoryDetail()));
+                      Navigator.push(context, SlideLeftRoute(page:CategoryDetail()));
                     },
                     child: Container(
                         width: 40,

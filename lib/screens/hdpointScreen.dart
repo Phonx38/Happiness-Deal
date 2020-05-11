@@ -1,3 +1,4 @@
+import 'package:badges/badges.dart';
 import 'package:couponzz/shared/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
@@ -13,12 +14,12 @@ class _HDPointsState extends State<HDPoints> {
 
 
   List<Transactions> transaction = [
-    Transactions(transactionType: 'Promotion',date: '12/09/20',transactionDesc: 'Credited to HD Points',amount: '20'),
-    Transactions(transactionType: 'Promotion',date: '12/09/20',transactionDesc: 'Credited to HD Points',amount: '20'),
-    Transactions(transactionType: 'Redeemed',date: '12/09/20',transactionDesc: 'Credited to HD Points',amount: '20'),
-    Transactions(transactionType: 'Redeemed',date: '12/09/20',transactionDesc: 'Credited to HD Points',amount: '20'),
-    Transactions(transactionType: 'Redeemed',date: '12/09/20',transactionDesc: 'Credited to HD Points',amount: '20'),
-    Transactions(transactionType: 'SignUp',date: '12/09/20',transactionDesc: 'Credited to HD Points',amount: '20'),
+    Transactions(transactionType: 'Promotion',date: '12 Jan 2020',transactionDesc: 'Credited to HD Points',amount: '+ 20',profit: true),
+    Transactions(transactionType: 'Promotion',date: '12 Jan 2020',transactionDesc: 'Credited to HD Points',amount: '+ 20',profit: true),
+    Transactions(transactionType: 'Redeemed',date: '12 Jan 2020',transactionDesc: 'Credited to HD Points',amount: '- 20',profit: false),
+    Transactions(transactionType: 'Redeemed',date: '12 Jan 2020',transactionDesc: 'Credited to HD Points',amount: '- 20',profit: false),
+    Transactions(transactionType: 'Redeemed',date: '12 Jan 2020',transactionDesc: 'Credited to HD Points',amount: '- 20',profit: false),
+    Transactions(transactionType: 'SignUp',date: '12 Jan 2020',transactionDesc: 'Credited to HD Points',amount: '+ 200',profit: true),
   ];
 
   _buildTransaction(){
@@ -58,7 +59,8 @@ class _HDPointsState extends State<HDPoints> {
                     )),
                     Text(transaction[index].amount,style: TextStyle(
                       fontSize: 11,
-                      color:Colors.grey[600]
+                      color: transaction[index].profit ? primary: Colors.redAccent,
+                      fontWeight: FontWeight.bold
                     ))
                   ],
                 ),
@@ -172,30 +174,52 @@ class _HDPointsState extends State<HDPoints> {
                                         ),
                                         Icon(FontAwesome.rupee,size:15,color:Colors.grey[600]),
 
-                                        Text('10',
-                                        style:TextStyle(
-                                            color: Colors.grey[600],
-                                           fontWeight: FontWeight.w600 ,
-                                           fontSize: 13,
-                                          ),)
+                                        Badge(
+                                          padding: EdgeInsets.all(3),
+                                          position: BadgePosition(left: 10,bottom: 6),
+                                          badgeColor: Color.fromRGBO(253,210,8,1.0),
+                                          badgeContent: Text('!',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 9),),
+                                          child: Text('10',
+                                          style:TextStyle(
+                                              color: Colors.grey[600],
+                                             fontWeight: FontWeight.w600 ,
+                                             fontSize: 13,
+                                            ),),
+                                        )
                                       ],
                                     ),
 
                                      SizedBox(height: 7,),
-                                   Center(
-                                     child: Container(
-                                       margin: EdgeInsets.only(left:30),
-                                       width: MediaQuery.of(context).size.width*0.80,
-                                            child: Text(
-                                              'You can pay upto 10% (may vary dusring the sale & promotion events) of your order valse through HD Pointd. Use them on the Payments Page dusring checkout',
-                                              style: TextStyle(
-                                                color: Colors.grey[400],
-                                              //  fontWeight: FontWeight.bold ,
-                                               fontSize: 10,
-                                              ),
-                                            ),
-                                          ),
-                                   ),
+                                  
+                                  Center(
+                                    child: Text('You can pay upto 10% (may vary dusring the' ,style: TextStyle(
+                                      fontSize: 10,
+                                      color: Colors.grey[500]
+                                    ),),
+                                  ),
+
+                                  Center(
+                                    child: Text('sale & promotion events) of your order valse',style: TextStyle(
+                                      fontSize: 10,
+                                      color: Colors.grey[500]
+                                    ),),
+                                  ),
+
+                                 
+
+                                  Center(
+                                    child: Text('through HD Pointd. Use them on the Payments',style: TextStyle(
+                                      fontSize: 10,
+                                      color: Colors.grey[500]
+                                    ),),
+                                  ),
+
+                                  Center(
+                                    child: Text(' Page dusring checkout',style: TextStyle(
+                                      fontSize: 10,
+                                      color: Colors.grey[500]
+                                    ),),
+                                  ),
 
                                    Padding(
                                      padding: EdgeInsets.only(top:10,bottom: 8),
@@ -204,19 +228,20 @@ class _HDPointsState extends State<HDPoints> {
 
 
                                    Padding(
-                                     padding: EdgeInsets.only(left: 8),
+                                     padding: EdgeInsets.only(left: 8,right: 8),
                                      child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                         crossAxisAlignment: CrossAxisAlignment.center,
                                         children: <Widget>[
                                           Text(
                                             'Refer Your Friends to Earn More',
                                             style: TextStyle(
-                                              color: Colors.black54,
+                                              color: Colors.black87,
                                              fontWeight: FontWeight.bold ,
                                              fontSize:15,
                                             ),
-                                          )
+                                          ),
+                                          Image.asset('images/menu/next.png',height: 10,width: 10,)
                                         ],
                                       ),
                                    ),
@@ -236,8 +261,8 @@ class _HDPointsState extends State<HDPoints> {
                                           Text(
                                             'Transaction Logs',
                                             style: TextStyle(
-                                              color: Colors.black,
-                                             fontWeight: FontWeight.w600,
+                                              color: Colors.black87,
+                                             fontWeight: FontWeight.bold ,
                                              fontSize:15,
                                             ),
                                           )
@@ -254,7 +279,7 @@ class _HDPointsState extends State<HDPoints> {
 
                                     Container(
                                       margin: EdgeInsets.only(bottom: 0),
-                                      padding: EdgeInsets.only(left: 5,right: 5,top: 0,bottom: 0),
+                                      padding: EdgeInsets.only(left: 10,right: 10,top: 0,bottom: 0),
                                       child: _buildTransaction(),
                                     ),
                                   //   Padding(
@@ -287,35 +312,51 @@ class _HDPointsState extends State<HDPoints> {
                                         title: Text(
                                              'Eligiblity,Membership,Accrual',
                                              style: TextStyle(
-                                               color: Colors.black,
-                                              fontWeight: FontWeight.w600,
-                                              fontSize:15,
-                                             ),
+                                              color: Colors.black87,
+                                             fontWeight: FontWeight.bold ,
+                                             fontSize:15,
+                                            ),
                                            ),
                                            children: <Widget>[
-                                             Text('asduasadsaihsdiashdiahdsiadiahdsia')
+                                             Container(
+                                               margin: EdgeInsets.only(left: 25),
+                                               child: Text('• You can pay upto 10% (may vary dusring the sale & promotion events) of your order valse through HD Pointd. Use them on the Payments Page dusring checkout'
+                                                 ,style: TextStyle(
+                                                   fontSize: 11,
+                                                   color: Colors.grey[500]
+                                                 ),),
+                                             ),
                                            ],
                                       ),
                                     ),
 
-
+                                    Divider(thickness: 8,color: dividerColor),
                                     ListTileTheme(
                                       dense: true,
                                      contentPadding: EdgeInsets.only(left: 8),
                                       child: ExpansionTile(
                                         title: Text(
                                              'General Terms & Conditions',
-                                             style: TextStyle(
-                                               color: Colors.black,
-                                              fontWeight: FontWeight.w600,
-                                              fontSize:15,
-                                             ),
+                                              style: TextStyle(
+                                              color: Colors.black87,
+                                             fontWeight: FontWeight.bold ,
+                                             fontSize:15,
+                                            ),
                                            ),
                                            children: <Widget>[
-                                             Text('asduasadsaihsdiashdiahdsiadiahdsia')
+                                             Padding(
+                                               padding: const EdgeInsets.all(8.0),
+                                               child: Text('• You can pay upto 10% (may vary dusring the sale & promotion events) of your order valse through HD Pointd. Use them on the Payments Page dusring checkout'
+                                               ,style: TextStyle(
+                                                 fontSize: 11,
+                                                 color: Colors.grey[500]
+                                               ),),
+                                             )
                                            ],
                                       ),
                                     ),
+
+                                    SizedBox(height:10)
                                    
                                   ],
                                 ),
@@ -382,11 +423,12 @@ class _HDPointsState extends State<HDPoints> {
 
 
 class Transactions{
+  bool profit;
   String transactionType;
   String transactionDesc;
   String date;
   String amount;
   Transactions({
-   this.transactionDesc,this.transactionType,this.date,this.amount
+   this.transactionDesc,this.transactionType,this.date,this.amount,this.profit
   });
 }

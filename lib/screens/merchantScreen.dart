@@ -20,23 +20,23 @@ class _MerchantScreenState extends State<MerchantScreen>{
 
 
  List<Reviews> reviews = [
-   Reviews(date: '12/12/20',name: 'Ashu',
+   Reviews(date: '12 Sep 2020',name: 'Ashu',
    image: 'images/shp1.jpg',
    desc:'Hey is defined as an expression of greeting similar to  or is a way to attract attention or express annoyance. ... When someone rudely bumps into you, this is an example of a time when you might say  to express your upset.'
    ),
-   Reviews(date: '12/12/20',name: 'Max',
+   Reviews(date: '12 Sep 2020',name: 'Max',
    image: 'images/shp1.jpg',
    desc:'Hey is defined as an expression of greeting similar to  or is a way to attract attention or express annoyance. ... When someone rudely bumps into you, this is an example of a time when you might say  to express your upset.'
    ),
-   Reviews(date: '12/12/20',name: 'Rohan',
+   Reviews(date: '12 Sep 2020',name: 'Rohan',
    image: 'images/shp1.jpg',
    desc:'Hey is defined as an expression of greeting similar to  or is a way to attract attention or express annoyance. ... When someone rudely bumps into you, this is an example of a time when you might say  to express your upset.'
    ),
-   Reviews(date: '12/12/20',name: 'Mack',
+   Reviews(date: '12 Sep 2020',name: 'Mack',
    image: 'images/shp1.jpg',
    desc:'Hey is defined as an expression of greeting similar to  or is a way to attract attention or express annoyance. ... When someone rudely bumps into you, this is an example of a time when you might say  to express your upset.'
    ),
-   Reviews(date: '12/12/20',name: 'Ashu',
+   Reviews(date: '12 Sep 2020',name: 'Ashu',
    image: 'images/shp1.jpg',
    desc:'Hey is defined as an expression of greeting similar to  or is a way to attract attention or express annoyance. ... When someone rudely bumps into you, this is an example of a time when you might say  to express your upset.'
    )
@@ -423,16 +423,49 @@ _buildReviews(){
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
-                                    Text("Business in Restaurant *",style: TextStyle(
-                                            // fontWeight: FontWeight.bold,
+                                     RichText(
+                                      text: new TextSpan(
+                                        text: 'Business in',
+                                        style: TextStyle(
+                                           color: Colors.black,
+                                           fontFamily: 'Montserrat-Medium',
                                             fontSize: 12
-
-                                          ),),
-
-                                    Text("Established in 1998 *",style: TextStyle(
-                                            // fontWeight: FontWeight.bold,
+                                          ),
+                                        children: <TextSpan>[
+                                          new TextSpan(
+                                              text: ' Restaurant *',
+                                              style: TextStyle(
+                                                 color: Colors.black,
+                                                 fontFamily: 'Montserrat-Medium',
+                                                  fontWeight: FontWeight.bold,
                                             fontSize: 12
-                                          ),)
+                                          ),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+
+                                    RichText(
+                                      text: new TextSpan(
+                                        text: 'Established in',
+                                        style: TextStyle(
+                                           color: Colors.black,
+                                            fontFamily: 'Montserrat-Medium',
+                                            fontSize: 12
+                                          ),
+                                        children: <TextSpan>[
+                                          new TextSpan(
+                                              text: ' 1998 *',
+                                              style: TextStyle(
+                                                color: Colors.black,
+                                                fontFamily: 'Montserrat-Medium',
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 12
+                                          ),
+                                          )
+                                        ],
+                                      ),
+                                    ),
                                   ],
                                 ),
                               ),
