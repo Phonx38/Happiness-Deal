@@ -1,7 +1,11 @@
 
+import 'dart:async';
+
+import 'package:couponzz/models/coupon.dart';
 import 'package:couponzz/screens/datasource.dart';
 import 'package:couponzz/shared/common.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 
 class OrderScreen extends StatefulWidget {
@@ -10,9 +14,118 @@ class OrderScreen extends StatefulWidget {
 }
 
 class _OrderScreenState extends State<OrderScreen> {
+  bool isPending = true;
+  bool isUsed = false;
+  
+  
+   _buildPendingDeals(){
+     return Container(
+        padding: EdgeInsets.only(bottom: 10,),
+        child: ListView.builder(
+          shrinkWrap: true,
+          physics: NeverScrollableScrollPhysics(),
+          itemCount: couponCards.length,
+          itemBuilder:(_,index){
+            final Coupon couponCard = couponCards[index];
+            return OrderCard(
+              coupon: couponCards[index],
+            );
+          } 
+          ),
+      );
+   }
+
+
+    _buildUsedDeals(){
+      return Container(
+          padding: EdgeInsets.only(bottom: 10,),
+          child: ListView.builder(
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            itemCount: couponCards.length,
+            itemBuilder:(_,index){
+              final Coupon couponCard = couponCards[index];
+              return UsedOrderCard(
+                coupon: couponCards[index],
+              );
+            } 
+            ),
+    );
+   }
+
+
   @override
   Widget build(BuildContext context) {
+
+
     return Scaffold(
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey,
+              blurRadius: 2.0, // soften the shadow
+              spreadRadius: 2.0, //extend the shadow
+              offset: Offset(
+                2.0, // Move to right 10  horizontally
+                2.0, // Move to bottom 10 Vertically
+              ),
+            )
+          ]
+        ),
+        padding: EdgeInsets.all(2),
+        
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            MaterialButton(
+              elevation: 0,
+               minWidth: 150,
+              color: isPending ?darkPrimary:primary,
+              onPressed: (){
+                Timer(Duration(milliseconds: 100), () {
+                  setState(() {
+                                  isPending = true;
+                                  isUsed = false;
+                                });
+                });
+               
+              },
+              child: Text(
+                'PENDING DEALS',
+                style: TextStyle(
+                  color: Colors.white,  
+                  fontWeight: FontWeight.bold,
+                  fontSize: 12
+                ),
+              ),
+            ),
+             MaterialButton(
+               elevation: 0,
+               minWidth: 150,
+              color: isUsed ? darkPrimary:primary,
+              onPressed: (){
+                setState(() {
+                  isUsed = true;
+                  isPending = false;
+                });
+              },
+              child: Text(
+                'USED DEALS',
+                style: TextStyle(
+                  color: Colors.white,  
+                  fontWeight: FontWeight.bold,
+                  fontSize: 12
+                ),
+              ),
+            ),
+            
+          ],
+
+        ),
+      ),
       body: SafeArea(
         child: Container(
           child:Stack(
@@ -56,9 +169,7 @@ class _OrderScreenState extends State<OrderScreen> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                              Container(
-                              
-                              ),
+                              isPending ? _buildPendingDeals() : _buildUsedDeals()
                             ],
                           ),
                         ),
@@ -114,3 +225,720 @@ class _OrderScreenState extends State<OrderScreen> {
     );
   }
 }
+
+
+
+
+
+class OrderCard extends StatefulWidget {
+   final Coupon coupon;
+  OrderCard({
+    this.coupon
+  });
+  @override
+  _OrderCardState createState() => _OrderCardState();
+}
+
+class _OrderCardState extends State<OrderCard> {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: ClipPath(
+        clipper: TicketClipper(10.0),
+        child: Material(
+          elevation: 0.0,
+          shadowColor: Color(0x30E5E5E5),
+          color: Colors.white,
+          child: Padding(
+            padding: const EdgeInsets.only(bottom:0.0,left: 4,right: 4,),
+            child: ClipPath(
+              clipper: TicketClipper(12.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [Color.fromRGBO(62,144,197,1),Color.fromRGBO(13,66,107,1)])),
+                height: 320,
+                width: 100,
+                child: Column(
+                  children: <Widget>[
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                         Container(
+                          margin: EdgeInsets.only(top:0, left: 8,right: 8),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              
+                              Container(
+                                margin: EdgeInsets.only(left:130),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(10),
+                                  child: Image.asset(
+                                    widget.coupon.couponImg,
+                                    height: 70,
+                                    width: 70,
+                                    fit: BoxFit.fill,
+                                  ),
+                                ),
+                              ),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Text('Qty',style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: secondary,
+                                    fontSize:10
+                                  ),),
+                                  Text('05',style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                    fontSize:13
+                                  ),)
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                  SizedBox(height:8),
+                  Center(
+                      child: Container(
+                        margin: EdgeInsets.only(top:8),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: <Widget>[
+                            Icon(Icons.shopping_basket,color: Colors.white,size:20),
+                            SizedBox(width:5.0),
+                            Container(
+                              child: Text(widget.coupon.dealBy,style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                                fontSize:17
+                              ),),
+                            ),
+                          ],
+                        ),
+                      ),
+                  ),
+                  Center(
+                      
+                      child: Container(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Center(
+                          child: Text(widget.coupon.couponDesc,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 11,
+                            // fontWeight: FontWeight.bold
+                          ),),
+                        ),
+                      ),
+                  ),
+
+                  Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          Container(
+                            decoration: BoxDecoration(
+                              color: secondary,
+                              borderRadius: BorderRadius.circular(5)
+                            ),
+                            padding: EdgeInsets.all(5),
+                            
+                            child: Center(
+                              child: Icon(Icons.call,size: 25,color: Colors.black,),
+                            ),
+                          ),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: <Widget>[
+                              Text('AKOTA BRIDGE',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.bold
+                                ),),
+                                Text(' BRANCH',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: secondary,
+                                  fontSize: 9,
+                                  // fontWeight: FontWeight.bold
+                                ),),
+                            ],
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                              color: secondary,
+                              borderRadius: BorderRadius.circular(5)
+                            ),
+                            padding: EdgeInsets.all(5),
+                            
+                            child: Center(
+                              child: Icon(Icons.location_on,size: 25,color: Colors.black,),
+                            ),
+                          ),
+                        ],
+                      ),
+                  )
+                  
+                  
+                ],
+
+              ),
+                    ),
+                  Container(
+                        color: secondary,
+                        width: MediaQuery.of(context).size.width,
+                        height: 25,
+                        child: Container(
+                          margin: EdgeInsets.only(left: 15,right:15),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              Text('03:00 PM - 04:00 PM',style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: darkPrimary,
+                                        fontSize:10,
+                                        
+                                      ),),
+                              Text('HAPPY HOUR',style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: darkPrimary,
+                                fontSize:10
+                              ),)
+                            ],
+                          ),
+                        ),
+                      ),
+                  
+                  Column(
+                    children: <Widget>[
+                      
+                      Container(
+                        height: 66,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                   Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Text('Expiry',style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: secondary,
+                                      fontSize:9
+                                    ),),
+                                    Text('12 May,2020',style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white,
+                                      fontSize:10
+                                    ),)
+                                  ],
+                                ),
+                                 SizedBox(height:15),
+                                 Text('Terms & Conditions',style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: secondary,
+                                      fontSize:10
+                                    ),)
+                                  
+                                ],
+                              ),
+                            ),
+
+
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: <Widget>[
+                                   Text('Deal Code',style: TextStyle(
+                                     fontWeight: FontWeight.bold,
+                                     color: secondary,
+                                     fontSize:9
+                                   ),),
+                                  SizedBox(height:5),
+                                   Container(
+                                     padding: EdgeInsets.all(5),
+                                     decoration: BoxDecoration(
+                                       color: secondary,
+                                       borderRadius: BorderRadius.circular(5),
+
+                                     ),
+
+                                     child: Center(
+                                       child:Text('787366233',style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: darkPrimary,
+                                          fontSize:15
+                                        ),), 
+                                     ),
+                                   )
+                                   
+                                 
+                                  
+                                ],
+                              ),
+                            ),
+
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+
+                   
+            ],
+          ),
+          
+        ),
+
+      )))),
+    );
+  }
+}
+
+
+
+
+// Used DEALsssss
+
+
+class UsedOrderCard extends StatefulWidget {
+   final Coupon coupon;
+  UsedOrderCard({
+    this.coupon
+  });
+  @override
+  _UsedOrderCardState createState() => _UsedOrderCardState();
+}
+
+class _UsedOrderCardState extends State<UsedOrderCard> {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: ClipPath(
+        clipper: TicketClipper(10.0),
+        child: Material(
+          elevation: 0.0,
+          shadowColor: Color(0x30E5E5E5),
+          color: Colors.white,
+          child: Padding(
+            padding: const EdgeInsets.only(bottom:0.0,left: 4,right: 4,),
+            child: ClipPath(
+              clipper: TicketClipper(12.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [Color.fromRGBO(62,144,197,1),Color.fromRGBO(13,66,107,1)])),
+                height: 320,
+                width: 100,
+                child: Column(
+                  children: <Widget>[
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                         Container(
+                          margin: EdgeInsets.only(top:0, left: 8,right: 8),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              
+                              Container(
+                                margin: EdgeInsets.only(left:130),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(10),
+                                  child: Image.asset(
+                                    widget.coupon.couponImg,
+                                    height: 70,
+                                    width: 70,
+                                    fit: BoxFit.fill,
+                                  ),
+                                ),
+                              ),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Text('Qty',style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: secondary,
+                                    fontSize:10
+                                  ),),
+                                  Text('05',style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                    fontSize:13
+                                  ),)
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                  SizedBox(height:8),
+                  Center(
+                      child: Container(
+                        margin: EdgeInsets.only(top:8),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: <Widget>[
+                            Icon(Icons.shopping_basket,color: Colors.white,size:20),
+                            SizedBox(width:5.0),
+                            Container(
+                              child: Text(widget.coupon.dealBy,style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                                fontSize:17
+                              ),),
+                            ),
+                          ],
+                        ),
+                      ),
+                  ),
+                  Center(
+                      
+                      child: Container(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Center(
+                          child: Text(widget.coupon.couponDesc,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 11,
+                            // fontWeight: FontWeight.bold
+                          ),),
+                        ),
+                      ),
+                  ),
+
+                  Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: <Widget>[
+                              Text('AKOTA BRIDGE',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.bold
+                                ),),
+                                Text(' BRANCH',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: secondary,
+                                  fontSize: 9,
+                                  // fontWeight: FontWeight.bold
+                                ),),
+                            ],
+                          ),
+                         
+                        ],
+                      ),
+                  ),
+                  
+                   Padding(
+                      padding: const EdgeInsets.only(top:5.0,bottom: 5.0,left: 10,right: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          InkWell(
+                            onTap: (){
+
+                showGeneralDialog(barrierColor: Colors.black.withOpacity(0.5),
+                              transitionBuilder: (context, a1, a2, widget) {
+                                return Transform.scale(
+                                  scale: a1.value,
+                                  child: Opacity(
+                                    opacity: a1.value,
+                                    child: Dialog(
+                                      backgroundColor: Colors.white,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(15),
+                                      ),
+                                      child: Container(
+                                        padding: const EdgeInsets.all(8.0),
+                                        height: 300,
+                                        width: MediaQuery.of(context).size.width,
+                                        child: Column(
+                                          children: <Widget>[
+                                            Row(
+                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children: <Widget>[
+                                                Text('Review Merchant',style: TextStyle(
+                                                  fontSize: 20,
+                                                    fontWeight: FontWeight.bold
+                                                ),),
+
+                                                Icon(Icons.cancel,size: 30,color: primary,)
+                                              ],
+                                            ),
+                                            SizedBox(height:20),
+                                             Form(
+                                               child: Column(
+                                                 children: <Widget>[
+                                                   RatingBar(
+                                                      onRatingUpdate: (rating) {
+                                                        print(rating);
+                                                      },
+                                                      ignoreGestures: true,
+                                                      tapOnlyMode: false,
+                                                      itemSize: 25,
+                                                      initialRating: 4,
+                                                      minRating: 1,
+                                                      direction: Axis.horizontal,
+                                                      allowHalfRating: true,
+                                                      itemCount: 5,
+                                                      itemPadding: EdgeInsets.symmetric(horizontal: 1.0),
+                                                      itemBuilder: (context, _) => Icon(
+                                                        Icons.star,
+                                                        color: Colors.amber,
+                                                      ),
+                                                      
+                                                    ),
+
+                                                     SizedBox(height:20),
+                                                      Row(
+                                                        mainAxisAlignment: MainAxisAlignment.start,
+                                                        children: <Widget>[
+                                                          Text('Message:',style: TextStyle(
+                                                                fontSize: 20,
+                                                                  fontWeight: FontWeight.bold
+                                                              ),),
+                                                        ],
+                                                      ),
+                                                      new Container(
+                                                        margin: EdgeInsets.only(top:10),
+                                                        decoration: new BoxDecoration(
+                                                          color: Colors.blueGrey[100],
+                                                          shape: BoxShape.rectangle,
+                                                          
+                                                        ),
+                                                        child: new TextField(
+                                                          keyboardType:TextInputType.multiline,
+                                                          textAlign: TextAlign.start,
+                                                          decoration: new InputDecoration(
+                                                            hintText: 'Give your message',
+                                                            hintStyle: TextStyle(
+                                                              fontSize: 10
+                                                            ),
+                                                            border: InputBorder.none,
+
+                                                          ),
+                                                        ),
+                                                      )
+                                                 ],
+                                               ),
+                                             ),
+                                           
+                                          ],
+                                        )
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              },
+                              transitionDuration: Duration(milliseconds: 200),
+                              barrierDismissible: true,
+                              barrierLabel: '',
+                              context: context,
+                              pageBuilder: (context, animation1, animation2) {}
+                              
+                              );
+                            },
+                            child: Container(
+                              width: 80,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5),
+                                color: secondary,
+                              ),
+                              padding: EdgeInsets.all(5),
+                              
+                              child: Center(
+                                child: Text(
+                                  'REVIEW',
+                                  style: TextStyle(
+                                    color:darkPrimary,
+                                    fontWeight: FontWeight.w900,
+                                    fontSize: 10
+                                  ),
+                                ),
+                              ),
+
+                            ),
+                          )
+                         
+                        ],
+                      ),
+                  )
+                  
+                  
+                ],
+
+              ),
+                    ),
+                  Container(
+                        color: secondary,
+                        width: MediaQuery.of(context).size.width,
+                        height: 25,
+                        child: Container(
+                          margin: EdgeInsets.only(left: 15,right:15),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              Text('03:00 PM - 04:00 PM',style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: darkPrimary,
+                                        fontSize:10,
+                                        
+                                      ),),
+                              Text('HAPPY HOUR',style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: darkPrimary,
+                                fontSize:10
+                              ),)
+                            ],
+                          ),
+                        ),
+                      ),
+                  
+                  Column(
+                    children: <Widget>[
+                      
+                      Container(
+                        height: 66,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                   Text('Expiry',style: TextStyle(
+                                     fontWeight: FontWeight.bold,
+                                     color: secondary,
+                                     fontSize:9
+                                   ),),
+                                   Text('12 May,2020',style: TextStyle(
+                                     fontWeight: FontWeight.bold,
+                                     color: Colors.white,
+                                     fontSize:10
+                                   ),),
+                                 
+                                ],
+                              ),
+                            ),
+
+
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: <Widget>[
+                                   Text('Redeemed',style: TextStyle(
+                                     fontWeight: FontWeight.bold,
+                                     color: secondary,
+                                     fontSize:9
+                                   ),),
+                                  SizedBox(height:5),
+                                    Text('12 May,2020',style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white,
+                                      fontSize:10
+                                    ),)
+                                   
+                                 
+                                  
+                                ],
+                              ),
+                            ),
+
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+
+                   
+            ],
+          ),
+          
+        ),
+
+      )))),
+    );
+  }
+}
+
+
+
+
+
+ class TicketClipper extends CustomClipper<Path> {
+  final double radius;
+
+  TicketClipper(this.radius);
+
+  @override
+  Path getClip(Size size) {
+    var path = new Path();
+    path.lineTo(0.0, size.height);
+    path.lineTo(size.width, size.height);
+    path.lineTo(size.width, 0.0);
+    path.addOval(
+        Rect.fromCircle(center: Offset(0.0, size.height / 1.33), radius: radius));
+    path.addOval(
+        Rect.fromCircle(center: Offset(size.width, size.height / 1.33), radius: radius));
+        
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) => true;
+}
+
+

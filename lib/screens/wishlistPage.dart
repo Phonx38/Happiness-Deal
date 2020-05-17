@@ -6,6 +6,8 @@ import 'package:couponzz/shared/common.dart';
 import 'package:couponzz/shared/transitions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dash/flutter_dash.dart';
+import 'package:flutter_icons/flutter_icons.dart';
+import 'package:flutter_ticket_widget/flutter_ticket_widget.dart';
 
 
 class WishlistScreen extends StatefulWidget {
@@ -154,11 +156,11 @@ class _WishlistCardState extends State<WishlistCard> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top:8.0,left: 8,right: 8,bottom: 10),
+      padding: const EdgeInsets.only(top:8.0,left: 0,right: 0,bottom: 8),
       child: Column(
         children: <Widget>[
             Container(
-              padding: const EdgeInsets.all(6.0),
+              padding: const EdgeInsets.only(top:3.0,left: 10,right: 10,bottom: 3),
                decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(10),
@@ -167,20 +169,25 @@ class _WishlistCardState extends State<WishlistCard> {
                 color: Color.fromRGBO(240,244,247,1),
               ),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: Image.asset(
-                      widget.coupon.couponImg,
-                      height: 80,
-                      width: 80,
-                      fit: BoxFit.fill,
+                  Container(
+                    margin: EdgeInsets.only(top:8),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Image.asset(
+                        widget.coupon.couponImg,
+                        height: 70,
+                        width: 70,
+                        fit: BoxFit.fill,
+                      ),
                     ),
                   ),
                   
                   Expanded(
                     child: Padding(
-                      padding: EdgeInsets.only(left: 8,right: 2),
+                      padding: EdgeInsets.only(left: 10,right: 0,top: 8),
                       child: Container(
                         // width: MediaQuery.of(context).size.width*0.65,
                         child: Column(
@@ -200,11 +207,12 @@ class _WishlistCardState extends State<WishlistCard> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                       children: <Widget>[
                                         Padding(
-                                          padding: const EdgeInsets.only(top:1.0),
+                                          padding: const EdgeInsets.only(top:0.0),
                                           child: Image.asset("images/discount.png",height: 15,),
                                         ),
-                                        SizedBox(width: 2,),
+                                        SizedBox(width: 5,),
                                         Container(
+                                          padding: EdgeInsets.only(top:0),
                                           width: MediaQuery.of(context).size.width *0.60,
                                           child: Text(widget.coupon.couponDesc,
                                           style: TextStyle(
@@ -227,16 +235,32 @@ class _WishlistCardState extends State<WishlistCard> {
                             
                             
                             Container(
-                              margin: EdgeInsets.only(top:20),
+                              margin: EdgeInsets.only(top:10),
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: <Widget>[
+
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: <Widget>[
+                                      Padding(
+                                                padding: const EdgeInsets.only(top:3.0),
+                                                child: Image.asset("images/couponshop.png"),
+                                              ),
+                                              SizedBox(width: 2,),
+                                              Container(
+                                                // width: MediaQuery.of(context).size.width *0.49,
+                                                child: Text(widget.coupon.dealBy,style: TextStyle(color: Color.fromRGBO(31,90,135,1),fontWeight: FontWeight.bold,fontSize: 12),)),
+                                    ],
+                                  ),
+
                                   Column(
                                     
                                     children: <Widget>[
                                       Padding(
-                                        padding: const EdgeInsets.only(right:10.0,top:2.0,bottom: 2.0,left: 2.0),
+                                        padding: const EdgeInsets.only(right:0.0,top:2.0,bottom: 2.0,left: 0.0),
                                         child: Text("3:00PM-4:00PM",style: TextStyle(
                                           color: Colors.grey[700],fontSize:10 ,fontWeight: FontWeight.bold)),
                                       )
@@ -245,7 +269,7 @@ class _WishlistCardState extends State<WishlistCard> {
                                 ],
                               ),
                             ),
-                            SizedBox(height: 0),
+                          
                             Padding(
                               padding: const EdgeInsets.only(bottom:2.0),
                               child: Row(
@@ -255,13 +279,12 @@ class _WishlistCardState extends State<WishlistCard> {
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment: CrossAxisAlignment.end,
                                     children: <Widget>[
-                                      Icon(Icons.star,color:secondary,size: 18,),
-                                      SizedBox(width:5),
-                                      Text("4.5",style: TextStyle(color: Colors.grey[700],fontSize: 14))
+                                      
+                                      Text("Veg/Non-Veg",style: TextStyle(color: Colors.black,fontSize: 8),),
                                     ],
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.only(right:10.0,top:2.0,bottom: 2.0,left: 2.0),
+                                    padding: const EdgeInsets.only(right:0.0,top:2.0,bottom: 2.0,left: 0.0),
                                     child: Container(
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(5),
@@ -270,13 +293,53 @@ class _WishlistCardState extends State<WishlistCard> {
                                       
                                       child: Padding(
                                         padding: const EdgeInsets.all(2.0),
-                                        child: Text("Happy Hour",style: TextStyle(color: Colors.grey[700],fontSize: 11)),
+                                        child: Text("Happy Hour",style: TextStyle(color: Colors.grey[700],fontSize: 8)),
                                       ),
                                     ),
                                   )
                                 ],
                               ),
                             ),
+                            SizedBox(height:5),
+
+                             Padding(
+                              padding: const EdgeInsets.only(bottom:2.0),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: <Widget>[
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: <Widget>[
+                                      
+                                      Text("12 Jan 2020",style: TextStyle(color: Colors.black,fontSize: 10),),
+                                    ],
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(2.0),
+                                    child:Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: <Widget>[
+                                          Icon(FontAwesome.rupee,size:12),
+                                          Text("250",style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 12,
+                                            color: Colors.black87
+                                          ),),
+                                          SizedBox(width: 5,),
+
+                                          Text("300",style: TextStyle(
+                                            decoration: TextDecoration.lineThrough,
+                                            // fontWeight: FontWeight.bold,
+                                            fontSize: 8,
+                                          ),)
+                                        ],
+                                      ),
+                                  )
+                                ],
+                              ),
+                             )
                             
                           ],
                         ),
@@ -286,6 +349,7 @@ class _WishlistCardState extends State<WishlistCard> {
                 ],
               ),
             ),
+
 
             Container(
               decoration: BoxDecoration(
@@ -298,22 +362,24 @@ class _WishlistCardState extends State<WishlistCard> {
               
               padding: EdgeInsets.only(top: 5,left: 15,right: 15,bottom: 5),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Row(
                     children: <Widget>[
-                      Text('Add to Cart',style: TextStyle(
+                      Text('Remove',style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 12,
                         color: Colors.grey[700]
                       ),),
                       SizedBox(width:5),
-                      Icon(Icons.shopping_cart,size:15,color: Colors.grey[700])
+                      Icon(Icons.delete,size:15,color: Colors.grey[700])
                     ],
                   ),
+                  
                   Container(
-                    height: 20,
+                    margin: EdgeInsets.only(left:20,right:60),
+                    height: 15,
                     width: 0,
                     decoration: BoxDecoration(
                       border: Border.all(
@@ -327,13 +393,13 @@ class _WishlistCardState extends State<WishlistCard> {
                   ),
                   Row(
                     children: <Widget>[
-                      Text('Remove',style: TextStyle(
+                      Text('Move To Cart',style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.grey[700],
                         fontSize: 12
                       ),),
                       SizedBox(width:5),
-                      Icon(Icons.delete,size:15,color: Colors.grey[700])
+                      Icon(Icons.shopping_cart,size:15,color: Colors.grey[700])
                     ],
                   ),
                 ],
@@ -344,4 +410,6 @@ class _WishlistCardState extends State<WishlistCard> {
       ),
     );
   }
+
 }
+// }
