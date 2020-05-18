@@ -59,6 +59,13 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+    - images/orders/mem1.png
+    - images/orders/mem2.png
+    - images/orders/mem3.png
+    - images/orders/back.png
+    - images/orders/i.png
+    - images/orders/phone.png
+    - images/orders/loc.png
     - images/menu/more.png
 
     - images/menu/fb.png

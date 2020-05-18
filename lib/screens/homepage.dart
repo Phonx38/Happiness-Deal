@@ -1,5 +1,7 @@
 
+import 'package:couponzz/screens/benefitScreen.dart';
 import 'package:couponzz/screens/faq.dart';
+import 'package:couponzz/screens/goldMembership.dart';
 import 'package:couponzz/screens/hdpointScreen.dart';
 import 'package:couponzz/screens/orderspage.dart';
 import 'package:couponzz/screens/referAndEarn.dart';
@@ -481,15 +483,31 @@ class CustomDrawer extends StatelessWidget {
               Divider(),
               Padding(
                 padding: const EdgeInsets.only(left:15.0,top: 2.0,bottom: 2.0,right: 8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    
-                      _currentUser ?Image.asset("images/menu/hd6.png",height: 20,width: 20,):Image.asset("images/menu/hd5.png",height: 20,width: 20,),
-                      SizedBox(width:10),
-                    Text('Reward Benefits') ,
-                     
-                  ],
+                child: InkWell(
+                  onTap: (){
+                    _currentUser ?Navigator.push(context, MaterialPageRoute(builder: (context)=>Benefits()))
+                    : showDialog(
+                      context: context,
+                      builder: (BuildContext context){
+                        return AlertDialog(
+                          title: Text('Please login'),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                        );
+                      }
+                      );
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      
+                        _currentUser ?Image.asset("images/menu/hd6.png",height: 20,width: 20,):Image.asset("images/menu/hd5.png",height: 20,width: 20,),
+                        SizedBox(width:10),
+                      Text('Reward Benefits') ,
+                       
+                    ],
+                  ),
                 ),
               ),
 
@@ -657,15 +675,31 @@ class CustomDrawer extends StatelessWidget {
               Divider(),
               Padding(
                 padding: const EdgeInsets.only(left:15.0,top: 2.0,bottom: 2.0,right: 8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    
-                      _currentUser ?Image.asset("images/menu/hd6.png",height: 20,width: 20,):Image.asset("images/menu/membership.png",height: 20,width: 20,),
-                      SizedBox(width:10),
-                    Text('Gold Membership') ,
-                     
-                  ],
+                child: InkWell(
+                  onTap: (){
+                    _currentUser ?Navigator.push(context, MaterialPageRoute(builder: (context)=>Membership()))
+                    : showDialog(
+                      context: context,
+                      builder: (BuildContext context){
+                        return AlertDialog(
+                          title: Text('Please login'),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                        );
+                      }
+                      );
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      
+                        _currentUser ?Image.asset("images/menu/hd6.png",height: 20,width: 20,):Image.asset("images/menu/membership.png",height: 20,width: 20,),
+                        SizedBox(width:10),
+                      Text('Gold Membership') ,
+                       
+                    ],
+                  ),
                 ),
               ),
               Divider(),

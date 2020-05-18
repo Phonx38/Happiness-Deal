@@ -156,7 +156,7 @@ class _WishlistCardState extends State<WishlistCard> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top:8.0,left: 0,right: 0,bottom: 8),
+      padding: const EdgeInsets.only(top:2.0,left: 0,right: 0,bottom:2),
       child: Column(
         children: <Widget>[
             Container(
@@ -353,7 +353,8 @@ class _WishlistCardState extends State<WishlistCard> {
 
             Container(
               decoration: BoxDecoration(
-                color: Color.fromRGBO(253,210,8,0.2),
+                color: Colors.white,
+                // color: Color.fromRGBO(253,210,8,0.2),
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(10),
                   bottomRight: Radius.circular(10)
@@ -404,6 +405,11 @@ class _WishlistCardState extends State<WishlistCard> {
                   ),
                 ],
               ),
+            ),
+            Container(
+              width: MediaQuery.of(context).size.width,
+              color: dividerColor,
+              height: 7,
             )
             
         ],
