@@ -352,7 +352,7 @@ class _OrderCardState extends State<OrderCard> {
                                     Text('05',style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       color: Colors.white,
-                                      fontSize:1
+                                      fontSize:13
                                     ),)
                                   ],
                                 ),
@@ -412,10 +412,10 @@ class _OrderCardState extends State<OrderCard> {
                               color: secondary,
                               borderRadius: BorderRadius.circular(5)
                             ),
-                            padding: EdgeInsets.all(5),
+                            padding: EdgeInsets.all(8),
                             
                             child: Center(
-                              child: Image.asset("images/orders/phone.png",height: 25,width: 25,fit: BoxFit.fill,)
+                              child: Image.asset("images/orders/phone.png",height: 23,width: 23,fit: BoxFit.fill,)
                             ),
                           ),
                           Row(
@@ -442,10 +442,10 @@ class _OrderCardState extends State<OrderCard> {
                               color: secondary,
                               borderRadius: BorderRadius.circular(5)
                             ),
-                            padding: EdgeInsets.all(5),
+                            padding: EdgeInsets.all(10),
                             
                             child: Center(
-                              child: Image.asset("images/orders/loc.png",height: 25,width: 25,fit: BoxFit.fill,)
+                              child: Image.asset("images/orders/loc.png",height: 22,width: 22,fit: BoxFit.fill,)
                             ),
                           ),
                         ],
@@ -534,7 +534,7 @@ class _OrderCardState extends State<OrderCard> {
                                     ),)
                                   ],
                                 ),
-                                 SizedBox(height:15),
+                                 SizedBox(height:10),
                                  Text('Terms & Conditions',style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       color: secondary,
@@ -880,29 +880,28 @@ class _UsedOrderCardState extends State<UsedOrderCard> {
                                                             ),),
                                                       ],
                                                     ),
-                                                    new Container(
-                                                      margin: EdgeInsets.only(top:10),
-                                                      decoration: new BoxDecoration(
-                                                        color: Color.fromRGBO(76, 167, 223,0.16),
-                                                        shape: BoxShape.rectangle,
-                                                        
-                                                      ),
+                                                     Container(
+                                                       height: 100,
+                                                       color: Color.fromRGBO(76, 167, 223,0.19),
+                                                      margin: EdgeInsets.only(right:10,left: 10),
                                                       child: new TextField(
-                                                        keyboardType:TextInputType.multiline,
+                                                        maxLines: null,
                                                         textAlign: TextAlign.start,
-                                                        decoration: InputDecoration(
-
-                                                          // contentPadding: EdgeInsets.symmetric(horizontal: 10.0,vertical: 4.0),
-                                                          hintText: "Give your message",
-                                                          hintStyle: TextStyle(
-                                                            fontSize: 10
-                                                          ),
-                                                          border: InputBorder.none,
-
-                                                        ),
+                                                        decoration: new InputDecoration(
+                                                          isDense: true,
+                                                          // contentPadding: const EdgeInsets.symmetric(vertical: 15.0),
+                                                            
+                                                            filled: true,
+                                                            
+                                                            hintStyle: new TextStyle(
+                                                             
+                                                              fontSize: 12,
+                                                              color: Colors.grey[800]),
+                                                            hintText: "Give your meassage",
+                                                            fillColor: Color.fromRGBO(76, 167, 223,0.16),),
                                                       ),
                                                     ),
-                                                    SizedBox(height:20),
+                                                    SizedBox(height:10),
 
                                                     InkWell(
                                                         onTap: (){
@@ -935,7 +934,7 @@ class _UsedOrderCardState extends State<UsedOrderCard> {
                                                                       Row(
                                                                         mainAxisAlignment: MainAxisAlignment.center,
                                                                         children: <Widget>[
-                                                                          Image.asset('images/profileicon/confirm.png',height:80,width:80,fit:BoxFit.fill)
+                                                                          Image.asset('images/profileicon/confirm.png',height:50,width:50,fit:BoxFit.fill)
                                                                         ],
                                                                       ),
                                                                       Row(
@@ -973,8 +972,8 @@ class _UsedOrderCardState extends State<UsedOrderCard> {
                                                             shape: BoxShape.circle,
                                                             color: Color.fromRGBO(253,210,8,1.0),
                                                           ),
-                                                          height: 50,
-                                                          width: 50,
+                                                          height: 40,
+                                                          width: 40,
                                                           
                                                           child: Center(child: Icon(Icons.keyboard_arrow_right,size: 35,color:Colors.black87,)),
                                                         ),

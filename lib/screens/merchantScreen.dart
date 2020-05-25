@@ -344,76 +344,108 @@ _buildReviews(){
                                 child: Row(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
-                                    Text("Veg/Non-Veg",style: TextStyle(
-                                            color: Colors.black54,
-                                            // fontWeight: FontWeight.bold,
-                                            fontSize: 12,
-                                          ),),
+                                     Icon(Icons.menu,color: primary,size: 20,),
+                                        SizedBox(width: 5,),
+                                        Text("Food",style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black87
+                                        ),),
+                                    
                                   ],
                                 ),
                               ),
 
                               Padding(
-                                padding: const EdgeInsets.only(left:10.0,right:10.0,top:8,bottom: 5),
+                                padding: const EdgeInsets.only(left:10.0,right:10.0,top:4,bottom: 5),
                                 child: Row(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: <Widget>[
-                                    Row(
+                                    Column(
                                       children: <Widget>[
-                                        Icon(Icons.menu,color: primary,size: 20,),
-                                        SizedBox(width: 5,),
-                                        Text("Food",style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black87
-                                        ),)
+                                        Text("Veg/Non-Veg",style: TextStyle(
+                                            color: Colors.black54,
+                                            // fontWeight: FontWeight.bold,
+                                            fontSize: 10,
+                                          ),),
+                                        
+                                       
                                       ],
                                     ),
-                                    Row(
+                                    Column(
                                       mainAxisAlignment: MainAxisAlignment.end,
-
-                                      children: <Widget>[
-                                        Container(
-                                          height: 20,
-                                          width: 20,
-                                          decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(2),
-                                            color:Colors.lightGreen
-                                          ),
-                                          child: Center(
-                                            child: Text("4.6",style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 10,
-                                                  ),),
-                                          ),
-                                        ),
-                                        SizedBox(width:3),
-                                    RatingBar(
-                                      onRatingUpdate: (rating) {
-                                        print(rating);
-                                      },
-                                      tapOnlyMode: false,
-                                      itemSize: 18,
-                                      initialRating: 4,
-                                      minRating: 1,
-                                      direction: Axis.horizontal,
-                                      allowHalfRating: true,
-                                      itemCount: 5,
-                                      itemPadding: EdgeInsets.symmetric(horizontal: 1.0),
-                                      itemBuilder: (context, _) => Icon(
-                                        Icons.star,
-                                        color: Colors.amber,
-                                      ),
                                       
-                                    ),
+                                      children: <Widget>[
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.end,
+
+                                          children: <Widget>[
+                                            Container(
+                                              height: 20,
+                                              width: 20,
+                                              decoration: BoxDecoration(
+                                                borderRadius: BorderRadius.circular(2),
+                                                color:Colors.lightGreen
+                                              ),
+                                              child: Center(
+                                                child: Text("4.6",style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontWeight: FontWeight.bold,
+                                                        fontSize: 10,
+                                                      ),),
+                                              ),
+                                            ),
+                                            SizedBox(width:3),
+                                        RatingBar(
+                                          onRatingUpdate: (rating) {
+                                            print(rating);
+                                          },
+                                          tapOnlyMode: false,
+                                          itemSize: 18,
+                                          initialRating: 4,
+                                          minRating: 1,
+                                          direction: Axis.horizontal,
+                                          allowHalfRating: true,
+                                          itemCount: 5,
+                                          itemPadding: EdgeInsets.symmetric(horizontal: 1.0),
+                                          itemBuilder: (context, _) => Icon(
+                                            Icons.star,
+                                            color: Colors.amber,
+                                          ),
+                                          
+                                        ),
+
+                                          ],
+                                        ),
+                                        
+                                        
                                       ],
                                     ),
                                     
                                   ],
                                 ),
                               ),
-                              SizedBox(height: 10,),
+
+                              Padding(
+                                padding: const EdgeInsets.only(left:10.0,right:20.0,top:4,bottom: 5),
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: <Widget>[
+                                     Text("MIN BILL - 100",style: TextStyle(
+                                              color: Colors.black87,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 10,
+                                            ),),
+                                    Text("MENU",style: TextStyle(
+                                              color: primary,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 11,
+                                            ),),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(height: 3,),
                               Divider(thickness: 10,color: Colors.grey[200],),
 
 
@@ -496,7 +528,7 @@ _buildReviews(){
                                                 SizedBox(height:2),
                                                 Text("Website",style: TextStyle(
                                                   color: Colors.white,
-                                                  fontSize: 13
+                                                  fontSize: 12
                                                 ),)
                                               ],
                                             ),
@@ -519,7 +551,7 @@ _buildReviews(){
                                                 SizedBox(height:2),
                                                 Text("Call",style:TextStyle(
                                                   color: Colors.white,
-                                                  fontSize: 13
+                                                  fontSize: 12
                                                 ),)
                                               ],
                                             ),
@@ -548,7 +580,7 @@ _buildReviews(){
                                                   SizedBox(height:2),
                                                   Text("Location",style:TextStyle(
                                                     color: Colors.white,
-                                                    fontSize: 13
+                                                    fontSize: 12
                                                   ),)
                                                 ],
                                               ),
@@ -580,7 +612,7 @@ _buildReviews(){
 
                                         Text("Open on- Mon,Tue,Wed,Thu,Fri",style: TextStyle(
                                           color: Colors.grey[600],
-                                          fontSize: 12
+                                          fontSize: 10
 
                                             ),),
                                       ],
@@ -599,7 +631,7 @@ _buildReviews(){
 
                                         Text("5:00 AM - 10:00PM",style: TextStyle(
                                           color: Colors.grey[600],
-                                          fontSize: 12,
+                                          fontSize: 10,
                                           
 
                                             ),),

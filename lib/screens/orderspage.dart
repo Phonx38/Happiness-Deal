@@ -486,7 +486,7 @@ class _OrderCardState extends State<OrderCard> {
                                     ),)
                                   ],
                                 ),
-                                 SizedBox(height:15),
+                                 SizedBox(height:10),
                                  Text('Terms & Conditions',style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       color: secondary,

@@ -580,7 +580,7 @@ class _CouponDescriptionState extends State<CouponDescription> {
                                    SizedBox(height:2),
                                    Text("Store",style: TextStyle(
                                      color: Colors.white,
-                                     fontSize: 13
+                                     fontSize: 12
                                    ),)
                                 ],
                               ),
@@ -603,7 +603,7 @@ class _CouponDescriptionState extends State<CouponDescription> {
                                    SizedBox(height:2),
                                    Text("Call",style:TextStyle(
                                      color: Colors.white,
-                                     fontSize: 13
+                                     fontSize: 12
                                    ),)
                                 ],
                               ),
@@ -713,7 +713,7 @@ class _CouponDescriptionState extends State<CouponDescription> {
                                      SizedBox(height:2),
                                      Text("Location",style:TextStyle(
                                        color: Colors.white,
-                                       fontSize: 13
+                                       fontSize: 12
                                      ),)
                                   ],
                                 ),
@@ -736,7 +736,7 @@ class _CouponDescriptionState extends State<CouponDescription> {
                     children: <Widget>[
                      Text("Terms & conditions",style: TextStyle(
                        fontWeight: FontWeight.bold,
-                       fontSize: 18,
+                       fontSize: 15,
                        color: Colors.black87
                      ),),
                      InkWell(  
